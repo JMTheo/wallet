@@ -22,7 +22,7 @@ ionic serve
 ## Membros do grupo
 - Amanda
 - Gabriel
-- João Matheus
+- João Matheus 
 - José Augusto
 - Vitória
 - Wesley Vitorio
