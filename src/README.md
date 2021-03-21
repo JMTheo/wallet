@@ -2,7 +2,7 @@
 
 App para disciplina de Computação de Dispositivos Móveis
 TO DO:
-- [ ] Arranjar um nome melhor para o projeto
+- [ ] Arranjar um nome melhor para o projeto final
 
 ## DEMO
 ![demo]
