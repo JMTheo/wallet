@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import { ButtonHomeModule } from 'src/app/components/button-home/button-home.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ButtonHomeModule,
     HomePageRoutingModule
   ],
   declarations: [HomePage]
