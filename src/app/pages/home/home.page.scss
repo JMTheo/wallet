@@ -1,12 +1,16 @@
-  ion-grid{
-    height: 100%;
-  }
-  ion-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+ion-grid {
+  height: 100%;
+}
+ion-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+ion-segment {
+  margin: auto;
+  width: 70%;
+}
 
 .titulo-vlr {
   font-weight: 200;
@@ -17,9 +21,12 @@
   font-weight: 700;
 }
 
-#area-botao{
-  background-color: #edeaea;
-  border-radius: 10px;
-  padding: 10px;
-  width: 70%;
+#botao-renda {
+  --color-activated: #28ba62;
+  --color-checked: #28ba62;
+}
+
+#botao-gasto {
+  --color-activated: #e4405f;
+  --color-checked: #e4405f;
 }

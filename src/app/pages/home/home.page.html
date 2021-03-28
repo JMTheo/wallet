@@ -9,25 +9,29 @@
 
 <ion-content>
   <div>
-    <ion-icon ></ion-icon>
     <ion-grid class="ion-text-center">
       <ion-row>
         <ion-col>
           <ion-text>
             <p class="titulo-vlr">Gasto total</p>
-            <h1 class="vlr-home">R$ 12.000,00</h1>
+            <h1 class="vlr-home">R$ {{ valorDinamico }}</h1>
           </ion-text>
         </ion-col>
       </ion-row>
+      <ion-row justify-content-center align-items-center >
+        <ion-col size="12">
+          <ion-segment (ionChange)="mudarCategoriaHome($event)" [(ngModel)]="estadoCategoria" mode="ios" swipeGesture="true">
+            <ion-segment-button id="botao-renda"value="renda">
+              <ion-label>Renda</ion-label>
+            </ion-segment-button>
+            <ion-segment-button id="botao-gasto" value="gasto">
+              <ion-label>Gastos</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
       <ion-row>
-        <div id="area-botao">
-          <ion-col class="ion-float-left" size="6">
-            <app-button-home textoBotao="Entrada 👌"></app-button-home>
-          </ion-col>
-          <ion-col class="ion-float-right" size="6">
-            <app-button-home textoBotao="Saida 😢"></app-button-home>
-          </ion-col>
-        </div>
+        <canvas #graficoLinha></canvas>
       </ion-row>
     </ion-grid>
   </div>
