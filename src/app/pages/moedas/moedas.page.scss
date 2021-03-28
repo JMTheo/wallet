@@ -4,4 +4,29 @@ ion-row{
     justify-content: center;
     height: 100%;
   }
-  
+
+  .segmento{
+    background-color:darkgrey;
+    border-radius: 10px; 
+    margin: auto;
+    margin-left: 30%;
+    width: 40%;
+  }
+
+  .botaoSegmento{
+    font-size: 110%;
+  }
+
+  .tituloGrafico{
+    display: flex;
+  }
+
+  .iconeSelecao{
+    font-size: 170%;
+    color: black;
+  }
+
+  .textoSelecao{
+    font-size: 120%;
+    color: black;
+  }

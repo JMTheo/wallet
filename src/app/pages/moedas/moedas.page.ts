@@ -24,7 +24,7 @@ export class MoedasPage implements OnInit {
     this.loadData();
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.criarGrafico();
   }
 
@@ -43,15 +43,26 @@ export class MoedasPage implements OnInit {
         }]
       },
       options: {
-        legend:{
-          labels:{
-            fontColor: 'black'
+        legend: {
+          display: false,
+          labels: {
+            fontColor: 'black',
+            fontFamily: 'Rubik'
           }
         },
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              fontColor: 'black',
+              fontFamily: 'Rubik'
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              fontColor: 'black',
+              fontFamily: 'Rubik'
             }
           }]
         }

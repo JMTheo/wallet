@@ -13,19 +13,19 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-icon name="logo-bitcoin"></ion-icon>
+          <ion-icon class="iconeSelecao" name="logo-bitcoin"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-select>
+          <ion-select class="textoSelecao">
             <ion-select-option>Bitcoin</ion-select-option>
             <ion-select-option>Ethereum</ion-select-option>
           </ion-select>
         </ion-col>
         <ion-col>
-          <ion-icon name="cash-outline"></ion-icon>
+          <ion-icon class="iconeSelecao" name="cash-outline"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-select>
+          <ion-select class="textoSelecao">
             <ion-select-option>Dólar</ion-select-option>
             <ion-select-option>Euro</ion-select-option>
             <ion-select-option>Real</ion-select-option>
@@ -39,17 +39,15 @@
 
 
   <ion-card class="tipoGrafico">
-    <ion-card-header>
+    <ion-card-header class="tituloGrafico">
       <ion-card-title>BTC - Dólar</ion-card-title>
-    </ion-card-header>
-    <ion-card-header>
-      <ion-segment value="line" [(ngModel)]="tipoGrafico"> <!-- [(ngModel)]="grafico.type"-->
-        <ion-segment-button value="line" (click) ="criarGrafico()">
+      <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico"> <!-- [(ngModel)]="grafico.type"-->
+        <ion-segment-button class="botaoSegmento" value="line" mode="ios" (click) ="criarGrafico()">
           <ion-label>
             <ion-icon name="analytics-sharp"></ion-icon>
           </ion-label>
         </ion-segment-button>
-        <ion-segment-button value="bar" (click) ="criarGrafico()">
+        <ion-segment-button class="botaoSegmento"value="bar" mode="ios" (click) ="criarGrafico()">
           <ion-label>
             <ion-icon name="bar-chart-sharp"></ion-icon>
           </ion-label>
