@@ -12,16 +12,16 @@ export class HomePage implements OnInit {
   estadoCategoria: string;
   valorDinamico: number;
   dadosGrafico: number[];
+  corGrafico: string;
   grafico: any;
 
   ngOnInit() {
     this.estadoCategoria = 'renda';
     this.valorDinamico = 12000;
-    console.log('Depois: ', this.estadoCategoria);
-
   }
 
   ionViewDidEnter() {
+    this.trocarDadosGrafico();
     this.criarGrafico();
   }
 
@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
           {
             label: this.estadoCategoria.toUpperCase(),
             data: this.dadosGrafico,
-            borderColor: '#00AEFF',
+            borderColor: this.corGrafico,
             borderWidth: 3,
             fill: false,
             pointRadius: 2,
@@ -67,13 +67,16 @@ export class HomePage implements OnInit {
     });
   }
 
+  //Mais para frente esses dados irão vir da storage offline
   trocarDadosGrafico() {
     switch (this.estadoCategoria) {
       case 'renda':
-        this.dadosGrafico = [1500, 2500, 4800, 9000];
+        this.dadosGrafico = [1500, 3500, 4800, 3000];
+        this.corGrafico = '#42d77d  '
         break;
       case 'gasto':
-        this.dadosGrafico = [800, 4500, 200, 500];
+        this.dadosGrafico = [800, 4500, 300, 800];
+        this.corGrafico = '#ed576b'
         break;
       default:
         this.dadosGrafico = [0];
