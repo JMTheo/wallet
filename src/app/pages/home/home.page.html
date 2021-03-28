@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <ion-text>
+            <p class="titulo-vlr">Gasto total</p>
+            <h1 class="vlr-home">R$ {{ valorDinamico }}</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center align-items-center >
+        <ion-col size="12">
+          <ion-segment (ionChange)="mudarCategoriaHome($event)" [(ngModel)]="estadoCategoria" mode="ios" swipeGesture="true">
+            <ion-segment-button id="botao-renda"value="renda">
+              <ion-label>Renda</ion-label>
+            </ion-segment-button>
+            <ion-segment-button id="botao-gasto" value="gasto">
+              <ion-label>Gastos</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <canvas #graficoLinha></canvas>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
