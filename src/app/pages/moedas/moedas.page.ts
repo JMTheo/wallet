@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import * as Chart from 'chart.js';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 import { ChartDataSets, ChartType, ScaleType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
@@ -10,33 +10,73 @@ import { Color, Label } from 'ng2-charts';
   templateUrl: './moedas.page.html',
   styleUrls: ['./moedas.page.scss'],
 })
-export class MoedasPage {
-  public chartData: ChartDataSets[] = [{ data: [], label: 'Moeda', lineTension: 0.15 }];
-  public chartType: ChartType = 'line';
-  public chartLabels: Label[];
-  public chartColors: Color[] = [{ backgroundColor: '#ADD8E6', borderColor: '#000000', borderWidth: 1 }];
-  public chartLegend: boolean = false;
+export class MoedasPage implements OnInit {
+  @ViewChild('graficoLinha') graficoLinha: ElementRef;
+
+  ngOnInit() {
+  }
+  grafico: any;
+  legenda: any;
+  dadosAPI: any;
+  public tipoGrafico: ChartType = 'line';
 
   constructor(private httpClient: HttpClient) {
     this.loadData();
   }
 
+  ionViewDidLeave(){
+    this.criarGrafico();
+  }
+
+  criarGrafico() {
+    this.grafico = new Chart(this.graficoLinha.nativeElement, {
+      type: this.tipoGrafico,
+      data: {
+        labels: this.legenda,
+        datasets: [{
+          label: 'Bitcoin',
+          data: this.dadosAPI,
+          borderColor: '#00AEFF',
+          borderWidth: 3,
+          fill: false,
+          pointRadius: 2
+        }]
+      },
+      options: {
+        legend:{
+          labels:{
+            fontColor: 'black'
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
   loadData() {
-    const request: string = `http://api.marketstack.com/v1/eod?access_key=b39be2892ed706cbb1eaaf54a53b2926&symbols=AAPL&date_from=2021-02-15&date_to=2021-03-25`;
+    const request: string = `http://api.marketstack.com/v1/eod?access_key=b39be2892ed706cbb1eaaf54a53b2926&symbols=AAPL&date_from=2021-03-08&date_to=2021-03-25`;
 
     this.httpClient.get(request).subscribe(res => {
       const data: any = (res as any).data;
-
-      this.chartLabels = [];
-      this.chartData[0].data = [];
+      this.legenda = [];
+      this.dadosAPI = [];
 
       for (let i = 0; i < data.length; i++) {
         const date: Date = new Date(data[i].date);
 
-        this.chartLabels.push(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
-        this.chartData[0].data.push(data[i].close);
+        this.legenda.push(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
+        this.dadosAPI.push(data[i].close);
       }
+      this.legenda = this.legenda.reverse();
+      this.dadosAPI = this.dadosAPI.reverse();
+      this.grafico = this.criarGrafico();
+
     });
+
   }
 }
-
