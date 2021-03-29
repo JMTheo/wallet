@@ -1,0 +1,32 @@
+ion-grid {
+  height: 100%;
+}
+ion-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+ion-segment {
+  margin: auto;
+  width: 70%;
+}
+
+.titulo-vlr {
+  font-weight: 200;
+  margin-bottom: -15px;
+}
+
+.vlr-home {
+  font-weight: 700;
+}
+
+#botao-renda {
+  --color-activated: #28ba62;
+  --color-checked: #28ba62;
+}
+
+#botao-gasto {
+  --color-activated: #e4405f;
+  --color-checked: #e4405f;
+}
