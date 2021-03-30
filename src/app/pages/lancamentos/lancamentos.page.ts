@@ -6,11 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lancamentos.page.scss'],
 })
 export class LancamentosPage implements OnInit {
-  public lancamento = [];
-  public entrada: number;
-  public teste: number;
-  public adicionarLancamento(entrada: number) {
-    this.lancamento.push(entrada);
+  public lancamentos: Array<number> = [];
+  public entradas: Array<string> = [];
+
+  public mudarValor(entrada: string, index: number) {
+    this.entradas[index] = entrada;
+  }
+
+  public adicionarLancamento() {
+    this.lancamentos.push(this.lancamentos.length);
+  }
+
+  public retornarValores() {
+    console.log(this.entradas);
   }
 
   ngOnInit() {}
