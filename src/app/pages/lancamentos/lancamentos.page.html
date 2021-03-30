@@ -12,6 +12,7 @@
     <ion-input
       [(ngModel)]="entradas[i]"
       (input)="mudarValor($event.target.value,i)"
+      type = number
     ></ion-input>
   </ion-item>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
