@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lancamentos.page.scss'],
 })
 export class LancamentosPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  public lancamento = [];
+  public entrada: number;
+  public teste: number;
+  public adicionarLancamento(entrada: number) {
+    this.lancamento.push(entrada);
   }
 
+  ngOnInit() {}
 }
