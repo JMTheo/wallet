@@ -8,28 +8,75 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content id="fonteGeral">
+<!--Conversão de moedas-->
+  <!--Criptomoedas para Moedas-->
   <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
+    <ion-grid class="bloco1">
+      <ion-grid-title>Bloco 1</ion-grid-title>
+      <ion-row id="areaConversao">
+        <ion-col size="1">
           <ion-icon class="iconeSelecao" name="logo-bitcoin"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-select class="textoSelecao">
-            <ion-select-option>Bitcoin</ion-select-option>
-            <ion-select-option>Ethereum</ion-select-option>
-          </ion-select>
+          <ion-input type="number" value="0.00"></ion-input>
         </ion-col>
         <ion-col>
+          <ion-select class="textoSelecao">
+            <ion-select-option>BTC</ion-select-option>
+            <ion-select-option>ETH</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="1">
           <ion-icon class="iconeSelecao" name="cash-outline"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-input type="number" value="4.00"></ion-input>
         </ion-col>
         <ion-col>
           <ion-select class="textoSelecao">
             <ion-select-option>Dólar</ion-select-option>
             <ion-select-option>Euro</ion-select-option>
+            <ion-select-option>Libra</ion-select-option>
             <ion-select-option>Real</ion-select-option>
-            <ion-select-option>Peso</ion-select-option>
+            <ion-select-option>Iene</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--Moedas para Moedas-->
+
+    <ion-grid>
+      <ion-grid-title>Bloco 2</ion-grid-title>
+      <ion-row id="areaConversao">
+        <ion-col size="1">
+          <ion-icon class="iconeSelecao" name="logo-euro"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-input type="number" value="0.00"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-select class="textoSelecao">
+            <ion-select-option>Dólar</ion-select-option>
+            <ion-select-option>Euro</ion-select-option>
+            <ion-select-option>Libra</ion-select-option>
+            <ion-select-option>Real</ion-select-option>
+            <ion-select-option>Iene</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="1">
+          <ion-icon class="iconeSelecao" name="logo-yen"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-input type="number" value="4.00"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-select class="textoSelecao">
+            <ion-select-option>Dólar</ion-select-option>
+            <ion-select-option>Euro</ion-select-option>
+            <ion-select-option>Libra</ion-select-option>
+            <ion-select-option>Real</ion-select-option>
             <ion-select-option>Iene</ion-select-option>
           </ion-select>
         </ion-col>
@@ -37,17 +84,22 @@
     </ion-grid>
   </ion-card>
 
-
+<!--Gráfico-->
   <ion-card class="tipoGrafico">
     <ion-card-header class="tituloGrafico">
-      <ion-card-title>BTC - Dólar</ion-card-title>
-      <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico"> <!-- [(ngModel)]="grafico.type"-->
-        <ion-segment-button class="botaoSegmento" value="line" mode="ios" (click) ="criarGrafico()">
+      <ion-card-title>
+        <ion-select value="BTC - Dolar">
+          <ion-select-option>BTC - Dolar</ion-select-option>
+          <ion-select-option>Euro - Yene</ion-select-option>
+        </ion-select>
+      </ion-card-title>
+      <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico">
+        <ion-segment-button class="botaoSegmento" value="line" mode="ios" (click)="criarGrafico()">
           <ion-label>
             <ion-icon name="analytics-sharp"></ion-icon>
           </ion-label>
         </ion-segment-button>
-        <ion-segment-button class="botaoSegmento"value="bar" mode="ios" (click) ="criarGrafico()">
+        <ion-segment-button class="botaoSegmento" value="bar" mode="ios" (click)="criarGrafico()">
           <ion-label>
             <ion-icon name="bar-chart-sharp"></ion-icon>
           </ion-label>
@@ -58,4 +110,38 @@
       <canvas #graficoLinha></canvas>
     </ion-card-content>
   </ion-card>
+
+  <!--Lista de moedas-->
+  <ion-card>
+    <ion-select class="textoLista" value="Real">
+      <ion-select-option>Dólar</ion-select-option>
+      <ion-select-option>Euro</ion-select-option>
+      <ion-select-option>Libra</ion-select-option>
+      <ion-select-option>Real</ion-select-option>
+      <ion-select-option>Iene</ion-select-option>
+    </ion-select>
+    <ion-list>
+      <ion-item>
+        <ion-label>Dólar</ion-label>
+        <ion-label class="valor">5,71 USD</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Euro</ion-label>
+        <ion-label class="valor">6,65 EUR</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Libra</ion-label>
+        <ion-label class="valor">7,89 GBP</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Real</ion-label>
+        <ion-label class="valor">1,00 BRL</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Iene</ion-label>
+        <ion-label class="valor">0,0052 JPY</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
 </ion-content>

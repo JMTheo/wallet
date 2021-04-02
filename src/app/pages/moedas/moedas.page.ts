@@ -88,6 +88,6 @@ export class MoedasPage implements OnInit {
       this.grafico = this.criarGrafico();
 
     });
-
+    
   }
 }
