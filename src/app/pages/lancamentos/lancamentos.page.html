@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lançamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button color="primary" (click)="adicionarLancamento()"
+    ><ion-label>Adicionar lançamento</ion-label><ion-icon name="add"></ion-icon
+  ></ion-button>
+  <ion-item *ngFor="let lancamento of lancamentos;let i = index;">
+    <ion-input
+      [(ngModel)]="entradas[i]"
+      (input)="mudarValor($event.target.value,i)"
+      type = number
+    ></ion-input>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

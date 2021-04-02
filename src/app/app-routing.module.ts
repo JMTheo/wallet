@@ -19,7 +19,16 @@ const routes: Routes = [
   {
     path: 'moedas',
     loadChildren: () => import('./pages/moedas/moedas.module').then( m => m.MoedasPageModule)
+  },
+  {
+    path: 'lancamentos',
+    loadChildren: () => import('./pages/lancamentos/lancamentos.module').then( m => m.LancamentosPageModule)
+  },  {
+    path: 'configuracoes',
+    loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
   }
+
+
 
 ];
 
