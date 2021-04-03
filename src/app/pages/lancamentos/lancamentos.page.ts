@@ -21,5 +21,19 @@ export class LancamentosPage implements OnInit {
     console.log(this.entradas);
   }
 
+  //Função que altera a cor do valor imprimido na tela, vermelho(danger) para negativo e verde(success) para positivo.
+  public adicionarValor(event: any){
+    let buttonId: string = event.target.getAttribute("id");
+    let inputId: any = document.getElementById(buttonId);
+
+    if (+inputId.getAttribute("ng-reflect-model") > 0){
+      inputId.setAttribute("color", "success");
+    }else{
+      inputId.setAttribute("color", "danger");
+    }
+
+    console.log(this.entradas);
+  }
+
   ngOnInit() {}
 }

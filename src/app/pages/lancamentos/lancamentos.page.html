@@ -16,7 +16,9 @@
       [(ngModel)]="entradas[i]"
       (input)="mudarValor($event.target.value,i)"
       type = number
+      [id]="'Id'+i"
     ></ion-input>
+    <ion-button (click)="adicionarValor($event)" type="submit" [id]="'Id'+i">Adicionar valor</ion-button>
   </ion-item>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="adicionarLancamento()">
