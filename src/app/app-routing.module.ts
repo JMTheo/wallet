@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicial',
     pathMatch: 'full'
   },
   {
@@ -23,11 +23,28 @@ const routes: Routes = [
   {
     path: 'lancamentos',
     loadChildren: () => import('./pages/lancamentos/lancamentos.module').then( m => m.LancamentosPageModule)
-  },  {
+  },
+  {
     path: 'configuracoes',
     loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registrar',
+    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },
+  {
+    path: 'inicial',
+    loadChildren: () => import('./pages/inicial/inicial.module').then( m => m.InicialPageModule)
   }
 
+  
+
+
+  
 
 
 ];
