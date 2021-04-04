@@ -1,7 +1,57 @@
-ion-row{
+  .segmento{
+    background-color:darkgrey;
+    border-radius: 10px; 
+    margin: auto;
+    margin-left: 30%;
+    width: 40%;
+  }
+
+  .botaoSegmento{
+    font-size: 110%;
+  }
+
+  .tituloGrafico{
+    min-height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
   }
-  
+
+  .iconeSelecao{
+    font-size: 170%;
+    color: black;
+  }
+
+  .textoSelecao{
+    font-size: 120%;
+    color: black;
+  }
+
+  #areaConversao{
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .bloco1{
+    border-bottom: 1px solid rgb(214, 209, 209);
+  }
+
+  .textoLista{
+    text-align: center;
+    font-size: 120%;
+    background-color: rgb(230, 227, 227);
+    color: black;
+  }
+
+  .valor{
+    text-align: end;
+  }
+
+  * {
+    font-family: lato; 
+    color: rgb(53, 49, 49);   
+  }

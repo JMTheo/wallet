@@ -28,3 +28,4 @@ import { from } from 'rxjs';
 export class MoedasPageModule {
  
 }
+
