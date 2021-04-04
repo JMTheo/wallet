@@ -31,9 +31,10 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },  {
+  },
+  {
     path: 'salario',
-    loadChildren: () => import('./salario/salario.module').then( m => m.SalarioPageModule)
+    loadChildren: () => import('./pages/salario/salario.module').then( m => m.SalarioPageModule)
   },
 
 ];
