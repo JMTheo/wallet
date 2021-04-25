@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { InputComponent } from '../components/input/input.component';
+import { InputComponent } from './input.component';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    IonicModule,
+  ],
   declarations: [InputComponent],
-  imports: [CommonModule, IonicModule],
-  exports: [InputComponent],
+  exports: [InputComponent]
 })
 export class InputModule {}

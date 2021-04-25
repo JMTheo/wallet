@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegistrarPageRoutingModule } from './Registrar-routing.module';
 
-import { InputModule } from '../../components/components.module';
+import { InputModule } from 'src/app/components/input/input.module';
 
 @NgModule({
   imports: [
