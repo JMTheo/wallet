@@ -28,14 +28,6 @@ const routes: Routes = [
     path: 'configuracoes',
     loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
   },
-  {
-    path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },
-  {
-    path: 'salario',
-    loadChildren: () => import('./pages/salario/salario.module').then( m => m.SalarioPageModule)
-  },
 
 ];
 
