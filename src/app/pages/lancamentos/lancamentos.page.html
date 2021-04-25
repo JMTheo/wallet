@@ -14,9 +14,9 @@
   <ion-item *ngFor="let lancamento of lancamentos;let i = index;">
     <ion-input
       [(ngModel)]="entradas[i]"
-      (input)="mudarValor($event.target.value,i)"
+
       type = number
-    ></ion-input>
+    ></ion-input> <!--  (input)="mudarValor($event.target.value,i)"-->
   </ion-item>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
