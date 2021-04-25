@@ -1,0 +1,32 @@
+
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/inicial" color="primary">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/registrar">Deseja se Cadastrar?</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Entrar</h1>
+    <img src="../../../assets/shapes.svg" />
+  </div>
+
+  <form id="form">
+    <app-input type= "email" placeholder="Email"></app-input>
+    <app-input type="password" placeholder="Senha"></app-input>
+    <ion-button type="submit" routerLink="/home" expand="block" shape="round">Login</ion-button>
+  </form>
+
+  <!-- <p routerLink="/esqueceu sua senha?">Esqueceu sua senha?</p> -->
+</ion-content>
+
+
+
