@@ -39,6 +39,7 @@ const routes: Routes = [
   {
     path: 'inicial',
     loadChildren: () => import('./pages/inicial/inicial.module').then( m => m.InicialPageModule)
+<<<<<<< Updated upstream
   }
 
   
@@ -46,6 +47,10 @@ const routes: Routes = [
 
   
 
+=======
+  },
+ 
+>>>>>>> Stashed changes
 
 ];
 

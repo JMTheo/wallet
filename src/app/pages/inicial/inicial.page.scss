@@ -1,4 +1,5 @@
 ion-content {
+<<<<<<< Updated upstream
 
     --background: #12;
 
@@ -28,6 +29,37 @@ ion-content {
     }
 
 
+=======
+  #header {
+    margin-top: 5%;
+    margin-bottom: 7%;
+    margin-left: 20%;
+    margin-right: 20%;
+    h1 {
+      text-align: center;
+      font-weight: 500;
+      font-size: 26px;
+      margin-bottom: 10%;
+      margin-top: 20%;
+    }
+
+  
+  }
+  img {
+    max-width: 160%;
+    width: 150%;
+    height: 100%;
+    margin-left: -50px;
+  }
+
+  #buttons {
+    margin-top: -30px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    align-items: flex-end;
+>>>>>>> Stashed changes
     
     #buttons {
 

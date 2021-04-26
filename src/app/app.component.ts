@@ -9,10 +9,15 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Moedas', url: '/moedas', icon: 'cash' },
     { title: 'Lançamentos', url: '/lancamentos', icon: 'checkmark' },
+<<<<<<< Updated upstream
     { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+=======
+    { title: 'Configurações', url: '/configuracoes', icon: 'settings'},
+    { title: 'Logout', url: '/inicial', icon: 'log-out'}
+>>>>>>> Stashed changes
   ];
   constructor() {}
 }
