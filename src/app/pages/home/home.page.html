@@ -18,10 +18,15 @@
           </ion-text>
         </ion-col>
       </ion-row>
-      <ion-row justify-content-center align-items-center >
+      <ion-row justify-content-center align-items-center>
         <ion-col size="12">
-          <ion-segment (ionChange)="mudarCategoriaHome($event)" [(ngModel)]="estadoCategoria" mode="ios" swipeGesture="true">
-            <ion-segment-button id="botao-renda"value="renda">
+          <ion-segment
+            (ionChange)="mudarCategoriaHome($event)"
+            [(ngModel)]="estadoCategoria"
+            mode="ios"
+            swipeGesture="true"
+          >
+            <ion-segment-button id="botao-renda" value="renda">
               <ion-label>Renda</ion-label>
             </ion-segment-button>
             <ion-segment-button id="botao-gasto" value="gasto">
@@ -33,6 +38,44 @@
       <ion-row>
         <canvas #graficoLinha></canvas>
       </ion-row>
+      <ion-col>
+        <ion-title>Ultimas transações</ion-title>
+        <app-ultimos-lancamentos
+          srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+          diaCompra="22/04/2021"
+          titulo="BK"
+          valor="100,00"
+          tipoTransacao="saida"
+        ></app-ultimos-lancamentos>
+        <app-ultimos-lancamentos
+          srcImg="https://image.freepik.com/free-vector/money-bags-coins-flat-design-vector-illustration_16734-107.jpg"
+          diaCompra="23/04/2021"
+          titulo="Salário"
+          valor="2500,00"
+          tipoTransacao="entrada"
+        ></app-ultimos-lancamentos
+        ><app-ultimos-lancamentos
+          srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+          diaCompra="01/04/2021"
+          titulo="Girafas"
+          valor="100,00"
+          tipoTransacao="saida"
+        ></app-ultimos-lancamentos
+        ><app-ultimos-lancamentos
+          srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+          diaCompra="20/04/2021"
+          titulo="KFC"
+          valor="39,00"
+          tipoTransacao="saida"
+        ></app-ultimos-lancamentos
+        ><app-ultimos-lancamentos
+          srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+          diaCompra="20/04/2021"
+          titulo="McDonals"
+          valor="100,00"
+          tipoTransacao="saida"
+        ></app-ultimos-lancamentos>
+      </ion-col>
     </ion-grid>
   </div>
 </ion-content>

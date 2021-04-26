@@ -5,17 +5,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegistrarPageRoutingModule } from './Registrar-routing.module';
+import { RegistrarPageRoutingModule } from './registrar-routing.module';
 
-import { InputModule } from '../../components/components.module';
+import { InputModule } from 'src/app/components/input/input.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InputModule,
     RegistrarPageRoutingModule,
+    InputModule
   ],
   declarations: [RegistrarPage],
 })
