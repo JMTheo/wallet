@@ -31,9 +31,20 @@ export class LancamentosPage implements OnInit {
     }else{
       inputId.setAttribute("color", "danger");
     }
+    
+    //Faz toggle para input ficar desabilitado após adicionado
 
-    console.log(this.entradas);
+    const buttons: any = document.getElementsByTagName("ion-button");
+
+    if(inputId.toggleAttribute("disabled")){
+      buttons[+ buttonId.substr(2) + 1].innerHTML = `<ion-icon name="create-outline"></ion-icon>`;
+    }else{
+      buttons[+ buttonId.substr(2) + 1].innerHTML = `<ion-icon name="checkmark-outline"></ion-icon>`;
+    }
+
+    ;
   }
+  
 
   ngOnInit() {}
 }

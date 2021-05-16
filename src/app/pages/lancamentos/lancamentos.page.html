@@ -18,7 +18,7 @@
       type = number
       [id]="'Id'+i"
     ></ion-input>
-    <ion-button (click)="adicionarValor($event)" type="submit" [id]="'Id'+i">Adicionar valor</ion-button>
+    <ion-button (click)="adicionarValor($event)" type="submit" [id]="'Id'+i"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
   </ion-item>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="adicionarLancamento()">
