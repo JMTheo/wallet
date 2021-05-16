@@ -17,6 +17,7 @@
       (input)="mudarValor($event.target.value,i)"
       type = number
       [id]="'Id'+i"
+      placeholder="Digite aqui o valor"
     ></ion-input>
     <ion-button (click)="adicionarValor($event)" type="submit" [id]="'Id'+i"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
   </ion-item>
