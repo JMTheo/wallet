@@ -1,0 +1,31 @@
+
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/inicial" color="primary">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/registrar">Cadastre-se!</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <img src="../../../assets/pessoas-minusculas-economizando-dinheiro-na-ilustracao-plana-isolada-do-cofrinho_74855-11124.jpg" />
+  </div>
+
+  <form id="form">
+    <app-input type= "email" placeholder="Email"></app-input>
+    <app-input type="password" placeholder="Senha"></app-input>
+    <ion-button type="submit" routerLink="/home" expand="block" shape="round">Login</ion-button>
+  </form>
+
+  <!-- <p routerLink="/esqueceu sua senha?">Esqueceu sua senha?</p> -->
+</ion-content>
+
+
+

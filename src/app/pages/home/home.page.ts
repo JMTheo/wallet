@@ -15,6 +15,12 @@ export class HomePage implements OnInit {
   corGrafico: string;
   grafico: any;
 
+  //deixando ponto para integração com o local storage
+  enderecoImgCard: string;
+  dataCard: string;
+  tituloCard: string;
+  valorCard: string;
+
   ngOnInit() {
     this.estadoCategoria = 'renda';
     this.valorDinamico = 12000;
@@ -29,7 +35,6 @@ export class HomePage implements OnInit {
     console.log('Nova categoria: ', ev.detail.value);
     this.trocarDadosGrafico();
     this.criarGrafico();
-
   }
 
   criarGrafico() {
@@ -50,9 +55,7 @@ export class HomePage implements OnInit {
       },
       options: {
         legend: {
-          labels: {
-            fontColor: 'black',
-          },
+          display: false,
         },
         scales: {
           yAxes: [
@@ -72,16 +75,15 @@ export class HomePage implements OnInit {
     switch (this.estadoCategoria) {
       case 'renda':
         this.dadosGrafico = [1500, 3500, 4800, 3000];
-        this.corGrafico = '#42d77d  '
+        this.corGrafico = '#42d77d';
         break;
       case 'gasto':
         this.dadosGrafico = [800, 4500, 300, 800];
-        this.corGrafico = '#ed576b'
+        this.corGrafico = '#ed576b';
         break;
       default:
         this.dadosGrafico = [0];
         break;
     }
-
   }
 }

@@ -1,9 +1,75 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>configuracoes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Configurações</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item-divider>
+    <ion-label> Alterar informações pessoais </ion-label>
+  </ion-item-divider>
 
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)] ="nome"  name= "nome" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Sobrenome</ion-label>
+      <ion-input [(ngModel)] ="sobrenome"  name= "Sobrenome" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" [(ngModel)] ="email"  name= "e-mail" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label  position="floating">Data de Nascimento</ion-label>
+      <ion-datetime [(ngModel)] ="dataDeNasc" name= "dataDeNasc"
+        displayFormat="MMMM YYYY"
+        min="1940-01"
+        max="2028-12"
+        value="2021-04-21T13:47:20.789"
+        monthNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
+        doneText="Ok"
+        cancelText="Voltar"
+      >
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select placeholder="Selecione um" [(ngModel)] ="sexo" name= "sexo">
+        <ion-select-option value="f">Feminino</ion-select-option>
+        <ion-select-option value="m">Masculino</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider>
+      <ion-label> Adicionar salário </ion-label>
+    </ion-item-divider>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Salário</ion-label>
+      <ion-input [(ngModel)] ="salario" name= "salario" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+          >Cancelar</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button type="submit" (click)= setTheValue() color="success" expand="block"
+          >Confirmar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
