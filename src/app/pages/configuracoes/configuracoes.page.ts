@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Storage } from '@ionic/storage'
-
+import { LocalStorageService } from '../../service/local-storage-service.service'
 
 @Component({
   selector: 'app-configuracoes',
@@ -8,67 +7,38 @@ import {Storage } from '@ionic/storage'
   styleUrls: ['./configuracoes.page.scss'],
 })
 export class ConfiguracoesPage implements OnInit {
+  storage: any;
+  nome: string;
+  sobrenome: string;
+  email: string;
+  dataDeNasc: Date;
+  sexo: string;
+  salario: number;
 
-  constructor(private storage:Storage) {
-    this.init()
-    
-   }
+  constructor(private storageService: LocalStorageService) {
+  }
+  async ngOnInit() {
+    //this.getTheValue()
+    this.storage = this.storageService;
+  }
+  ionViewDidEnter() {
+    this.getTheValue();
+  }
+  async setTheValue() {
+    await this.storage.set('nome', this.nome);
+    await this.storage.set('sobrenome', this.sobrenome);
+    await this.storage.set('email', this.email);
+    await this.storage.set('dataDeNasc', this.dataDeNasc);
+    await this.storage.set('sexo', this.sexo);
+    await this.storage.set('salario', this.salario);
+  }
 
-   OnInit(){
-    
-
-   }
-
-   
-  ngOnInit() {
-    
-    this.getTheValue()
-   
-   }
-
-
-  private _storage:Storage | null = null;
-    nome:  string;  
-    sobrenome: string;
-    email: string;
-    dataDeNasc: Date;
-    sexo: string;
-    salario: number;
-
-
-
-
-   
-    async init() {
-      const Storage = await this.storage.create();
-      this._storage = this.storage;
-    }
-
-   async setTheValue(){
-   await this._storage.set('nome', this.nome)
-   await this._storage.set('nome', this.nome+"ola")
-  
-    await this._storage.set('sobrenome', this.sobrenome)
-    await this._storage.set('email', this.sobrenome)
-    await this._storage.set('dataDeNasc', this.dataDeNasc)
-    await this._storage.set('sexo', this.sexo)
-    await this._storage.set('salario', this.salario)
-
-
-
-   }
-
- async  getTheValue(){
-   var nome = await this._storage.get('nome')
-        await this._storage.get('sobrenome')
-        await this._storage.get('email')
-        await this._storage.get('dataDeNasc')
-       await this._storage.get('sexo')
-       await this._storage.get('salario')
-    
-   }
-
-
-
-
+  async getTheValue() {
+    this.nome = await this.storage.get('nome');
+    this.sobrenome = await this.storage.get('sobrenome');
+    this.email = await this.storage.get('email');
+    this.dataDeNasc = await this.storage.get('dataDeNasc');
+    this.sexo = await this.storage.get('sexo');
+    this.salario = await this.storage.get('salario');
+  }
 }
