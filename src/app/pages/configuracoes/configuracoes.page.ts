@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../service/local-storage-service.service'
+import { LocalStorageService } from '../../service/local-storage-service.service';
 
 @Component({
   selector: 'app-configuracoes',
@@ -15,8 +15,7 @@ export class ConfiguracoesPage implements OnInit {
   sexo: string;
   salario: number;
 
-  constructor(private storageService: LocalStorageService) {
-  }
+  constructor(private storageService: LocalStorageService) {}
   async ngOnInit() {
     //this.getTheValue()
     this.storage = this.storageService;
@@ -25,20 +24,24 @@ export class ConfiguracoesPage implements OnInit {
     this.getTheValue();
   }
   async setTheValue() {
-    await this.storage.set('nome', this.nome);
-    await this.storage.set('sobrenome', this.sobrenome);
-    await this.storage.set('email', this.email);
-    await this.storage.set('dataDeNasc', this.dataDeNasc);
-    await this.storage.set('sexo', this.sexo);
-    await this.storage.set('salario', this.salario);
+    let user = {
+      nome: this.nome,
+      sobrenome: this.sobrenome,
+      email: this.email,
+      sexo: this.sexo,
+      dataDeNasc: this.dataDeNasc,
+      salario: this.salario,
+    };
+    await this.storage.set('user', user);
   }
 
   async getTheValue() {
-    this.nome = await this.storage.get('nome');
-    this.sobrenome = await this.storage.get('sobrenome');
-    this.email = await this.storage.get('email');
-    this.dataDeNasc = await this.storage.get('dataDeNasc');
-    this.sexo = await this.storage.get('sexo');
-    this.salario = await this.storage.get('salario');
+    let userData = await this.storage.get('user');
+    this.nome = userData.nome;
+    this.sobrenome = userData.sobrenome;
+    this.email = userData.email;
+    this.dataDeNasc = userData.dataDeNasc;
+    this.sexo = userData.sexo;
+    this.salario = userData.salario;
   }
 }
