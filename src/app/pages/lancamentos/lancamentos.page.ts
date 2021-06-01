@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
 
 @Component({
   selector: 'app-lancamentos',
@@ -8,6 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class LancamentosPage implements OnInit {
   public lancamentos: Array<number> = [];
   public entradas: Array<string> = [];
+
+  constructor(private modalCtrl: ModalController) { }
+
+  async abrirModal() {
+    
+    let modal = await this.modalCtrl.create({
+      component: LancamentosModalComponent
+    });
+  
+  await modal.present();
+}
+
+
 
   public mudarValor(entrada: string, index: number) {
     this.entradas[index] = entrada;
@@ -44,6 +59,9 @@ export class LancamentosPage implements OnInit {
 
     ;
   }
+
+
+  
   
 
   ngOnInit() {}

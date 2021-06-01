@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adicionar Lançamento</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-form>
+  <ion-item>
+    <ion-label position="stacked">Data</ion-label>
+    <ion-dateTime></ion-dateTime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Tipo</ion-label>
+    <ion-select>
+      <ion-select-option>Entrada</ion-select-option>
+      <ion-select-option>Saída</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Digite aqui o valor</ion-label>
+      <ion-input type= number ></ion-input>
+  </ion-item>
+</ion-form>
+</ion-content>

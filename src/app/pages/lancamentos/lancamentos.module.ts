@@ -8,6 +8,9 @@ import { LancamentosPageRoutingModule } from './lancamentos-routing.module';
 
 import { LancamentosPage } from './lancamentos.page';
 
+import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { LancamentosPage } from './lancamentos.page';
     IonicModule,
     LancamentosPageRoutingModule
   ],
-  declarations: [LancamentosPage]
+  declarations: [LancamentosPage, LancamentosModalComponent],
+  entryComponents: [LancamentosModalComponent]
 })
 export class LancamentosPageModule {}
