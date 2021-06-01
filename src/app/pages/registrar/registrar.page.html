@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons routerLink="/inicial" slot="start">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">Entrar?</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Crie<br />sua conta</h1>
+
+  <form id="form">
+    <app-input type="text"placeholder="Seu nome"></app-input>
+    <app-input type="email" placeholder="Email"></app-input>
+    <app-input type="password" placeholder="Senha"></app-input>
+    <ion-button expand="block" routerLink="/inicial" shape="round">Cadastrar-se</ion-button>
+  </form>
+
+  <p style="color: black;">Ao clicar em "Cadastrar" <br />você aceita nossos termos & condições</p>
+</ion-content>
+
