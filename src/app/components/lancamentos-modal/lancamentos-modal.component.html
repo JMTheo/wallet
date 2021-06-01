@@ -6,22 +6,45 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content>
-<ion-form>
-  <ion-item>
-    <ion-label position="stacked">Data</ion-label>
-    <ion-dateTime></ion-dateTime>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Tipo</ion-label>
-    <ion-select>
-      <ion-select-option>Entrada</ion-select-option>
-      <ion-select-option>Saída</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Digite aqui o valor</ion-label>
-      <ion-input type= number ></ion-input>
-  </ion-item>
-</ion-form>
+<div>
+  <ion-form>
+    <ion-item>
+      <ion-label name = titulo position="fixed">Título</ion-label>
+      <ion-input type=text></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label name = diaCompra position="fixed">Data</ion-label>
+      <ion-dateTime></ion-dateTime>
+    </ion-item>
+    <ion-item>
+      <ion-label name = tipoTransacao position="fixed">Tipo</ion-label>
+      <ion-select>
+        <ion-select-option value="entrada" >Entrada</ion-select-option>
+        <ion-select-option value="saida" >Saída</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label name = valor position="fixed">Valor</ion-label>
+        <ion-input type= number ></ion-input>
+    </ion-item>
+  </ion-form>
+</div>
+
+<ion-row>
+  <ion-col>
+    <ion-button type="submit" (click) = fecharModal() color="danger" expand="block"
+      >Cancelar</ion-button
+    >
+  </ion-col>
+  <ion-col>
+    <ion-button type="submit" color="success" expand="block"
+      >Confirmar</ion-button
+    >
+  </ion-col>
+</ion-row>
+
+
 </ion-content>
