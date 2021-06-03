@@ -8,7 +8,7 @@ import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/
   styleUrls: ['./lancamentos.page.scss'],
 })
 export class LancamentosPage implements OnInit {
-  public lancamentos: Array<number> = [];
+  public lancamentos: Array<object> = [];
   public entradas: Array<string> = [];
 
   constructor(private modalCtrl: ModalController) { }
@@ -16,20 +16,14 @@ export class LancamentosPage implements OnInit {
   async abrirModal() {
     
     let modal = await this.modalCtrl.create({
-      component: LancamentosModalComponent
+      component: LancamentosModalComponent,
     });
   
   await modal.present();
 }
 
-
-
   public mudarValor(entrada: string, index: number) {
     this.entradas[index] = entrada;
-  }
-
-  public adicionarLancamento() {
-    this.lancamentos.push(this.lancamentos.length);
   }
 
   public retornarValores() {
@@ -59,10 +53,5 @@ export class LancamentosPage implements OnInit {
 
     ;
   }
-
-
-  
-  
-
   ngOnInit() {}
 }
