@@ -30,3 +30,5 @@ npm-debug.log*
 /plugins
 /www
 yarn.lock
+
+dev.sh

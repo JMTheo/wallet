@@ -8,21 +8,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-button color="primary" (click)="adicionarLancamento()"
-    ><ion-label>Adicionar lançamento</ion-label><ion-icon name="add"></ion-icon
-  ></ion-button>
-  <ion-item *ngFor="let lancamento of lancamentos;let i = index;">
-    <ion-input
-      [(ngModel)]="entradas[i]"
-      type = number
-      [id]="'Id'+i"
-      placeholder="Digite aqui o valor"
-    ></ion-input>
-    <ion-button (click)="adicionarValor($event)" type="submit" [id]="'Id'+i"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
-  </ion-item>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="adicionarLancamento()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <div>
+    <ion-grid class="ion-text-center">
+      <ion-row justify-content-center align-items-center>
+        <ion-col>
+          <ion-button color="primary" (click)="abrirModal()"
+          ><ion-label>Adicionar lançamento</ion-label><ion-icon name="add"></ion-icon
+        ></ion-button>
+        </ion-col>
+      </ion-row>
+
+      <app-ultimos-lancamentos *ngFor="let i of lancamentosList"
+        srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+        diaCompra = {{i.diaCompra}}
+        titulo= {{i.titulo}}
+        valor= {{i.valor}}
+        tipoTransacao={{i.tipoTransacao}}
+      ></app-ultimos-lancamentos>
+
+    </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="abrirModal()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
 </ion-content>
