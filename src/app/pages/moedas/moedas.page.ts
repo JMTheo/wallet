@@ -5,6 +5,7 @@ import { ChartDataSets, ChartType, ScaleType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 
+
 @Component({
   selector: 'app-moedas',
   templateUrl: './moedas.page.html',
@@ -69,8 +70,9 @@ export class MoedasPage implements OnInit {
       }
     });
   }
+
   loadData() {
-    const request: string = `http://api.marketstack.com/v1/eod?access_key=b39be2892ed706cbb1eaaf54a53b2926&symbols=AAPL&date_from=2021-03-08&date_to=2021-03-25`;
+    const request: string = `http://api.marketstack.com/v1/eod?access_key=b39be2892ed706cbb1eaaf54a53b2926&symbols=BTC&date_from=2021-06-01&date_to=2021-06-04`;
 
     this.httpClient.get(request).subscribe(res => {
       const data: any = (res as any).data;
@@ -88,6 +90,7 @@ export class MoedasPage implements OnInit {
       this.grafico = this.criarGrafico();
 
     });
-    
+
+
   }
 }

@@ -28,7 +28,7 @@
     color: black;
   }
 
-  #areaConversao{
+  .areaConversao{
     min-height: 56px;
     display: flex;
     align-items: center;
@@ -36,7 +36,15 @@
     height: 100%;
   }
 
-  .bloco1{
+  .bloco1-1{
+    border-bottom: 1px solid rgb(214, 209, 209);
+  }
+
+  .bloco1-2{
+    border-bottom: 2px solid rgb(214, 209, 209);
+  }
+
+  .bloco2-1{
     border-bottom: 1px solid rgb(214, 209, 209);
   }
 
