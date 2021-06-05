@@ -10,7 +10,6 @@ import { LancamentosPage } from './lancamentos.page';
 
 import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
 import { UltimosLancamentosModule } from '../../components/ultimos-lancamentos/ultimos-lancamentos.module';
-import { IconLancamentosModule } from '../../components/icon-lancamentos/icon-lancamentos.module';
 
 @NgModule({
   imports: [
@@ -19,8 +18,7 @@ import { IconLancamentosModule } from '../../components/icon-lancamentos/icon-la
     ReactiveFormsModule,
     IonicModule,
     LancamentosPageRoutingModule, 
-    UltimosLancamentosModule,
-    IconLancamentosModule
+    UltimosLancamentosModule
   ],
   declarations: [LancamentosPage, LancamentosModalComponent],
   entryComponents: [LancamentosModalComponent]
