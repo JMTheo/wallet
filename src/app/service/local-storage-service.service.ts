@@ -25,4 +25,18 @@ export class LocalStorageService {
     return this._storage.get(key);
   }
 
+  //Função para adicionar lançamento
+  public addLancamento(key: string, value: any) {
+    this._storage?.set(key, value);
+  }
+  
+  //Função que retorna todos os lançamentos em um array de objetos
+  public retornaTodosLancamentos(){
+    let lancamentos: any = [];
+    this.storage.forEach((key, value, index) => {
+      lancamentos.push({'key': value, 'value': key})
+    })
+    return lancamentos;
+  }
+
 }

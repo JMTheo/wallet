@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-
+import { LocalStorageService } from '../../service/local-storage-service.service'
 
 @Component({
   selector: 'app-lancamentos-modal',
@@ -15,13 +15,24 @@ export class LancamentosModalComponent implements OnInit {
   tipoTransacao = new FormControl('', Validators.required);
   valor = new FormControl('', Validators.required);
     
-  constructor(private modalCtrl: ModalController) { }
+  novoLancamento = {};
 
-  fecharModal(){
-    this.modalCtrl.dismiss();
+  constructor(private modalCtrl: ModalController, public LocalStorageService: LocalStorageService) { }
+
+  async fecharModal(){
+    await this.modalCtrl.dismiss();
   }
 
-  enviarDados(){
+  //Salvando dados do modal dentro do Local Storage
+  async enviarDados(){
+    this.novoLancamento = ({titulo: this.titulo.value, diaCompra: this.diaCompra.value, tipoTransacao: this.tipoTransacao.value, valor: this.valor.value})
+    let lancamentoId = this.titulo.value + this.diaCompra.value;
+    if(lancamentoId){
+      await this.LocalStorageService.addLancamento(lancamentoId, this.novoLancamento);
+    }else{
+      alert("Não é possível salvar lançamento vazio")
+    }
+
     this.fecharModal();
   }
 
