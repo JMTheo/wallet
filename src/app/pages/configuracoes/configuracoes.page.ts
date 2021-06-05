@@ -20,6 +20,7 @@ export class ConfiguracoesPage implements OnInit {
     //this.getTheValue()
     this.storage = this.storageService;
   }
+  
   ionViewDidEnter() {
     this.getTheValue();
   }

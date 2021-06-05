@@ -18,14 +18,14 @@
         </ion-col>
       </ion-row>
 
-      <app-ultimos-lancamentos *ngFor="let i of lancamentosList; let j = index"
+      <app-ultimos-lancamentos *ngFor="let i of lancamentosList"
         srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
-        diaCompra = {{i.value.diaCompra}}
-        titulo= {{i.value.titulo}}
-        valor= {{i.value.valor}}
-        tipoTransacao={{i.value.tipoTransacao}}
+        diaCompra = {{i.diaCompra}}
+        titulo= {{i.titulo}}
+        valor= {{i.valor}}
+        tipoTransacao={{i.tipoTransacao}}
       ></app-ultimos-lancamentos>
-  
+
     </ion-grid>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="abrirModal()">
@@ -33,7 +33,5 @@
       </ion-fab-button>
     </ion-fab>
   </div>
-  <icon-lancamentos>teste</icon-lancamentos>
-
 
 </ion-content>
