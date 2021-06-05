@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
-import { IconLancamentosComponent } from 'src/app/components/icon-lancamentos/icon-lancamentos.component';
+
 import { LocalStorageService } from '../../service/local-storage-service.service';
 
 @Component({

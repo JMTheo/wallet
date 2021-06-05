@@ -12,7 +12,7 @@ export class LancamentosModalComponent implements OnInit {
   
   titulo = new FormControl('', Validators.required);
   diaCompra = new FormControl('', Validators.required);
-  tipoTransacao = new FormControl('', Validators.required);
+  tipoOperacao = new FormControl('', Validators.required);
   valor = new FormControl('', Validators.required);
     
   novoLancamento = {};
@@ -25,7 +25,7 @@ export class LancamentosModalComponent implements OnInit {
 
   //Salvando dados do modal dentro do Local Storage
   async enviarDados(){
-    this.novoLancamento = ({titulo: this.titulo.value, diaCompra: this.diaCompra.value, tipoTransacao: this.tipoTransacao.value, valor: this.valor.value})
+    this.novoLancamento = ({titulo: this.titulo.value, diaCompra: this.diaCompra.value, tipoOperacao: this.tipoOperacao.value, valor: this.valor.value})
     let lancamentoId = this.titulo.value + this.diaCompra.value;
     if(lancamentoId){
       await this.LocalStorageService.addLancamento(lancamentoId, this.novoLancamento);
