@@ -13,7 +13,7 @@
       <ion-row>
         <ion-col>
           <ion-text>
-            <p class="titulo-vlr">Gasto total</p>
+            <p class="titulo-vlr">{{ labelValorD }}</p>
             <h1 class="vlr-home">R$ {{ valorDinamico }}</h1>
           </ion-text>
         </ion-col>
@@ -26,10 +26,10 @@
             mode="ios"
             swipeGesture="true"
           >
-            <ion-segment-button id="botao-renda" value="renda">
+            <ion-segment-button id="botao-renda" value="entrada">
               <ion-label>Renda</ion-label>
             </ion-segment-button>
-            <ion-segment-button id="botao-gasto" value="gasto">
+            <ion-segment-button id="botao-gasto" value="saida">
               <ion-label>Gastos</ion-label>
             </ion-segment-button>
           </ion-segment>
@@ -40,34 +40,16 @@
       </ion-row>
       <ion-col>
         <ion-title>Últimas transações</ion-title>
-        <app-ultimos-lancamentos
-          diaCompra="22/04/2021"
-          titulo="CDB"
-          valor="100,00"
-          tipoOperacao="saida"
-          tipoTransacao = "investimentos"
+        <div *ngFor="let i of listaLancamentosCard">
+          <app-ultimos-lancamentos *ngIf="i.tipoTransacao == estadoCategoria"
+          srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+          diaCompra = {{i.diaCompra}}
+          titulo= {{i.titulo}}
+          valor= {{i.valor}}
+          tipoTransacao={{i.tipoTransacao}}
         ></app-ultimos-lancamentos>
-        <app-ultimos-lancamentos
-          diaCompra="23/04/2021"
-          titulo="Salário"
-          valor="2500,00"
-          tipoOperacao="entrada"
-          tipoTransacao = "salario"
-        ></app-ultimos-lancamentos
-        ><app-ultimos-lancamentos
-          diaCompra="01/04/2021"
-          titulo="Aluguel"
-          valor="100,00"
-          tipoOperacao="saida"
-          tipoTransacao = "imovel"
-        ></app-ultimos-lancamentos
-        ><app-ultimos-lancamentos
-          diaCompra="20/04/2021"
-          titulo="McDonalds"
-          valor="100,00"
-          tipoOperacao="saida"
-          tipoTransacao = "alimentacao"
-        ></app-ultimos-lancamentos>
+        </div>
+
       </ion-col>
     </ion-grid>
   </div>
