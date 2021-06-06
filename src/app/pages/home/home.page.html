@@ -40,7 +40,7 @@
       </ion-row>
       <ion-col>
         <ion-title>Últimas transações</ion-title>
-        <div *ngFor="let i of listaLancamentos">
+        <div *ngFor="let i of listaLancamentosCard">
           <app-ultimos-lancamentos *ngIf="i.tipoTransacao == estadoCategoria"
           srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
           diaCompra = {{i.diaCompra}}
