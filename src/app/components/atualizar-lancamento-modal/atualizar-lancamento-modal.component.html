@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Lançamento</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<div>
+    <ion-item>
+      <ion-label position="fixed">Título</ion-label>
+      <ion-input [formControl]="titulo" name="titulo" type=text></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Data</ion-label>
+      <ion-input type="date" [formControl]="diaCompra" name="diaCompra"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="fixed">Operação</ion-label>
+      <ion-select [formControl]="tipoOperacao" name = "tipoOperacao">
+        <ion-select-option value="entrada" >Entrada</ion-select-option>
+        <ion-select-option value="saida" >Saída</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="fixed">Transação</ion-label>
+      <ion-select [formControl]="tipoTransacao" name = "tipoTransacao">
+        <ion-select-option value="salario" >Salário</ion-select-option>
+        <ion-select-option value="imovel" >Imóvel</ion-select-option>
+        <ion-select-option value="investimentos" >Investimentos</ion-select-option>
+        <ion-select-option value="boleto" >Boleto</ion-select-option>
+        <ion-select-option value="alimentacao"> Alimentação</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Valor</ion-label>
+        <ion-input [formControl]="valor" name ="valor" type= number></ion-input>
+    </ion-item>
+</div>
+
+<ion-row>
+  <ion-col>
+    <ion-button color="success" expand="block" (click)= "enviarDados()"
+      >Confirmar</ion-button
+    >
+  </ion-col>
+</ion-row>
+
+
+</ion-content>
+
+

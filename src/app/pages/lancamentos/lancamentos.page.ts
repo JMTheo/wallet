@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
-
+import { AtualizarLancamentoModalComponent } from 'src/app/components/atualizar-lancamento-modal/atualizar-lancamento-modal.component'
 import { LocalStorageService } from '../../service/local-storage-service.service';
 import { Lancamento } from '../../interface/lancamento';
 
@@ -30,6 +30,21 @@ export class LancamentosPage implements OnInit {
   async abrirModal() {
     let modal = await this.modalCtrl.create({
       component: LancamentosModalComponent,
+    });
+
+    //Atualiza lista de lançamentos de acordo com o LocalStorage após fechar o modal
+    modal.onDidDismiss().then(() => {
+      this.retornaTodosLancamentos();
+    });
+
+    await modal.present();
+  }
+
+  async atualizarLancamento(lancamentoItem) {
+
+    let modal = await this.modalCtrl.create({
+      component: AtualizarLancamentoModalComponent,
+      componentProps: {lancamento: lancamentoItem}
     });
 
     //Atualiza lista de lançamentos de acordo com o LocalStorage após fechar o modal
