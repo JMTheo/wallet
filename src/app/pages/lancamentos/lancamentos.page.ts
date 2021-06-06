@@ -39,9 +39,14 @@ export class LancamentosPage implements OnInit {
 
     await modal.present();
   }
-
+  
   //Atualiza lista de lançamentos
   async retornaTodosLancamentos() {
     this.lancamentosList = await this.storage.retornaTodosLancamentos();
+  }
+
+  async delete(id){
+    await this.LocalStorageService.delLancamento(id);
+    this.retornaTodosLancamentos();
   }
 }

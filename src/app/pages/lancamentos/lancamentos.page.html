@@ -17,13 +17,32 @@
         ></ion-button>
         </ion-col>
       </ion-row>
-      <app-ultimos-lancamentos *ngFor="let i of lancamentosList"
-        diaCompra = {{i.diaCompra}}
-        titulo= {{i.titulo}}
-        valor= {{i.valor}}
-        tipoOperacao={{i.tipoOperacao}}
-        tipoTransacao={{i.tipoTransacao}}
-      ></app-ultimos-lancamentos>
+      <ion-item *ngFor="let i of lancamentosList">
+        <ion-col size="10">
+          <app-ultimos-lancamentos
+          diaCompra = {{i.diaCompra}}
+          titulo= {{i.titulo}}
+          valor= {{i.valor}}
+          tipoOperacao={{i.tipoOperacao}}
+          tipoTransacao={{i.tipoTransacao}}
+          class="lancamentoCard"
+        >
+        </app-ultimos-lancamentos>
+        </ion-col>
+        <ion-col>
+          <ion-col>
+            <ion-button color="light" (click)="">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="light" (click)="delete(i.key)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+     </ion-col>
+      </ion-item>
+     
 
     </ion-grid>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
