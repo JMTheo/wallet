@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
 
 import { LocalStorageService } from '../../service/local-storage-service.service';
+import { Lancamento } from '../../interface/lancamento';
 
 @Component({
   selector: 'app-lancamentos',
@@ -10,12 +11,23 @@ import { LocalStorageService } from '../../service/local-storage-service.service
   styleUrls: ['./lancamentos.page.scss'],
 })
 export class LancamentosPage implements OnInit {
-  public lancamentosList: Array<object> = [];
+  lancamentosList: Array<Lancamento>;
+  storage: any;
 
-  constructor(private modalCtrl: ModalController, public LocalStorageService: LocalStorageService) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private LocalStorageService: LocalStorageService
+  ) {}
+
+  async ngOnInit() {
+    this.storage = this.LocalStorageService;
+  }
+
+  ionViewDidEnter() {
+    this.retornaTodosLancamentos();
+  }
 
   async abrirModal() {
-    
     let modal = await this.modalCtrl.create({
       component: LancamentosModalComponent,
     });
@@ -23,18 +35,13 @@ export class LancamentosPage implements OnInit {
     //Atualiza lista de lançamentos de acordo com o LocalStorage após fechar o modal
     modal.onDidDismiss().then(() => {
       this.retornaTodosLancamentos();
-    })
-  
-  await modal.present();
-}
+    });
 
-//Atualiza lista de lançamentos
-retornaTodosLancamentos(){
-  console.log(this.lancamentosList);
-  this.lancamentosList = this.LocalStorageService.retornaTodosLancamentos();
-}
- 
-  ngOnInit() {
-    this.retornaTodosLancamentos();
+    await modal.present();
+  }
+
+  //Atualiza lista de lançamentos
+  async retornaTodosLancamentos() {
+    this.lancamentosList = await this.storage.retornaTodosLancamentos();
   }
 }

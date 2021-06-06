@@ -17,15 +17,14 @@
         ></ion-button>
         </ion-col>
       </ion-row>
-
-      <app-ultimos-lancamentos *ngFor="let i of lancamentosList; let j = index"
-        diaCompra = {{i.value.diaCompra}}
-        titulo= {{i.value.titulo}}
-        valor= {{i.value.valor}}
+      <app-ultimos-lancamentos *ngFor="let i of lancamentosList"
         tipoOperacao={{i.value.tipoOperacao}}
-        tipoTransacao="salario"
+        diaCompra = {{i.diaCompra}}
+        titulo= {{i.titulo}}
+        valor= {{i.valor}}
+        tipoTransacao={{i.tipoTransacao}}
       ></app-ultimos-lancamentos>
-  
+
     </ion-grid>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="abrirModal()">
@@ -33,6 +32,5 @@
       </ion-fab-button>
     </ion-fab>
   </div>
-
 
 </ion-content>
