@@ -11,7 +11,7 @@ import { LocalStorageService } from '../../service/local-storage-service.service
 export class LancamentosModalComponent implements OnInit {
   titulo = new FormControl('', Validators.required);
   diaCompra = new FormControl('', Validators.required);
-  tipoOperacao = new FormControl('', Validators.required);
+  tipoTransacao = new FormControl('', Validators.required);
   valor = new FormControl('', Validators.required);
 
 
