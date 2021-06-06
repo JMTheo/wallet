@@ -19,11 +19,11 @@
       </ion-row>
 
       <app-ultimos-lancamentos *ngFor="let i of lancamentosList; let j = index"
-        srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
         diaCompra = {{i.value.diaCompra}}
         titulo= {{i.value.titulo}}
         valor= {{i.value.valor}}
-        tipoTransacao={{i.value.tipoOperacao}}
+        tipoOperacao={{i.value.tipoOperacao}}
+        tipoTransacao="salario"
       ></app-ultimos-lancamentos>
   
     </ion-grid>
