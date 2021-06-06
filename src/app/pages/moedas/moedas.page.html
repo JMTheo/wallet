@@ -3,10 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Moedas - Tabelas e Conversões</ion-title>
+    <ion-title>Moedas</ion-title>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content id="fonteGeral">
   <!--Conversão de moedas-->
@@ -14,21 +13,31 @@
     <ion-grid class="bloco1-1">
       <ion-title>De</ion-title>
       <ion-row class="areaConversao">
-        <ion-col size='1'>
+        <ion-col size="1">
           <ion-icon class="iconeSelecao" name="logo-bitcoin"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-input type="number" value="0.00"></ion-input>
+          <ion-input
+            type="number"
+            [formControl]="moeda.valor_origem"
+            ngDefaultControl
+            name="moeda_valor_origem"
+          ></ion-input>
         </ion-col>
-        <ion-col size='3'>
-          <ion-select class="textoSelecao" value="BTC">
-            <ion-select-option>BTC</ion-select-option>
-            <ion-select-option>ETH</ion-select-option>
-            <ion-select-option>Dólar</ion-select-option>
-            <ion-select-option>Euro</ion-select-option>
-            <ion-select-option>Libra</ion-select-option>
-            <ion-select-option>Real</ion-select-option>
-            <ion-select-option>Iene</ion-select-option>
+        <ion-col size="3">
+          <ion-select
+            class="textoSelecao"
+            type="string"
+            [formControl]="moeda.origem"
+            ngDefaultControl
+            name="moeda_origem"
+          >
+            <ion-select-option value="BTC">BTC</ion-select-option>
+            <ion-select-option value="USD">Dólar</ion-select-option>
+            <ion-select-option value="EUR">Euro</ion-select-option>
+            <ion-select-option value="GBP">Libra</ion-select-option>
+            <ion-select-option value="BRL">Real</ion-select-option>
+            <ion-select-option value="JPY">Iene</ion-select-option>
           </ion-select>
         </ion-col>
       </ion-row>
@@ -37,22 +46,42 @@
     <ion-grid class="bloco2-1">
       <ion-title>Para</ion-title>
       <ion-row id="areaConversao">
-        <ion-col size='1'>
+        <ion-col size="1">
           <ion-icon class="iconeSelecao" name="logo-euro"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-input type="number" value="0.00"></ion-input>
+          <ion-input
+            type="number"
+            name="moeda_valor_final"
+            [value]="moeda.valor_final"
+            readonly
+          ></ion-input>
         </ion-col>
-        <ion-col size='3'>
-          <ion-select class="textoSelecao" value="Euro">
-            <ion-select-option>BTC</ion-select-option>
-            <ion-select-option>ETH</ion-select-option>
-            <ion-select-option>Dólar</ion-select-option>
-            <ion-select-option>Euro</ion-select-option>
-            <ion-select-option>Libra</ion-select-option>
-            <ion-select-option>Real</ion-select-option>
-            <ion-select-option>Iene</ion-select-option>
+        <ion-col size="3">
+          <ion-select
+            class="textoSelecao"
+            type="string"
+            [formControl]="moeda.final"
+            ngDefaultControl
+            name="moeda_origem"
+          >
+            <ion-select-option value="BTC">BTC</ion-select-option>
+            <ion-select-option value="USD">Dólar</ion-select-option>
+            <ion-select-option value="EUR">Euro</ion-select-option>
+            <ion-select-option value="GBP">Libra</ion-select-option>
+            <ion-select-option value="BRL">Real</ion-select-option>
+            <ion-select-option value="JPY">Iene</ion-select-option>
           </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-text-center">
+      <ion-row justify-content-center align-items-center>
+        <ion-col>
+          <ion-button color="success" expand="block" (click)="converterMoeda()"
+            >Confirmar</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -68,12 +97,22 @@
         </ion-select>
       </ion-card-title>
       <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico">
-        <ion-segment-button class="botaoSegmento" value="line" mode="ios" (click)="criarGrafico()">
+        <ion-segment-button
+          class="botaoSegmento"
+          value="line"
+          mode="ios"
+          (click)="criarGrafico()"
+        >
           <ion-label>
             <ion-icon name="analytics-sharp"></ion-icon>
           </ion-label>
         </ion-segment-button>
-        <ion-segment-button class="botaoSegmento" value="bar" mode="ios" (click)="criarGrafico()">
+        <ion-segment-button
+          class="botaoSegmento"
+          value="bar"
+          mode="ios"
+          (click)="criarGrafico()"
+        >
           <ion-label>
             <ion-icon name="bar-chart-sharp"></ion-icon>
           </ion-label>
@@ -87,35 +126,34 @@
 
   <!--Lista de moedas-->
   <ion-card>
-    <ion-select class="textoLista" value="Real">
-      <ion-select-option>Dólar</ion-select-option>
-      <ion-select-option>Euro</ion-select-option>
-      <ion-select-option>Libra</ion-select-option>
-      <ion-select-option>Real</ion-select-option>
-      <ion-select-option>Iene</ion-select-option>
+    <ion-select class="textoLista" value="BRL" (ionChange)="conversaoMoedas($event)">
+      <ion-select-option value="USD">Dólar</ion-select-option>
+      <ion-select-option value="EUR">Euro</ion-select-option>
+      <ion-select-option value="GBP">Libra</ion-select-option>
+      <ion-select-option value="BRL">Real</ion-select-option>
+      <ion-select-option value="JPY">Iene</ion-select-option>
     </ion-select>
     <ion-list>
       <ion-item>
         <ion-label>Dólar</ion-label>
-        <ion-label class="valor">5,71 USD</ion-label>
+        <ion-label class="valor">{{ listaMoedas.dolar }} USD</ion-label>
       </ion-item>
       <ion-item>
         <ion-label>Euro</ion-label>
-        <ion-label class="valor">6,65 EUR</ion-label>
+        <ion-label class="valor">{{ listaMoedas.euro }} EUR</ion-label>
       </ion-item>
       <ion-item>
         <ion-label>Libra</ion-label>
-        <ion-label class="valor">7,89 GBP</ion-label>
+        <ion-label class="valor">{{ listaMoedas.libra }} GBP</ion-label>
       </ion-item>
       <ion-item>
         <ion-label>Real</ion-label>
-        <ion-label class="valor">1,00 BRL</ion-label>
+        <ion-label class="valor">{{listaMoedas.real}} BRL</ion-label>
       </ion-item>
       <ion-item>
         <ion-label>Iene</ion-label>
-        <ion-label class="valor">0,0052 JPY</ion-label>
+        <ion-label class="valor">{{ listaMoedas.iene }} JPY</ion-label>
       </ion-item>
     </ion-list>
   </ion-card>
-
 </ion-content>
