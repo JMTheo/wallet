@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicial.page.scss'],
 })
 export class InicialPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

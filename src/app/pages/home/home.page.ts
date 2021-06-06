@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { LocalStorageService } from '../../service/local-storage-service.service';
 import { Lancamento } from '../../interface/lancamento';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -121,7 +122,6 @@ export class HomePage implements OnInit {
   async retornaTodosLancamentos() {
     let arr = await this.storage.retornaTodosLancamentos();
     if(arr) {
-      console.log(arr)
       this.listaLancamentos = arr;
       this.listaLancamentosCard = arr.slice().sort((a: Lancamento, b: Lancamento) =>
       new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime())
