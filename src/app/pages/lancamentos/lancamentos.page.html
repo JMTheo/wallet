@@ -17,9 +17,8 @@
         ></ion-button>
         </ion-col>
       </ion-row>
-
       <app-ultimos-lancamentos *ngFor="let i of lancamentosList"
-        srcImg="https://i.pinimg.com/originals/83/04/31/830431f04b70f189d95cd42e4bf1d502.jpg"
+        tipoOperacao={{i.value.tipoOperacao}}
         diaCompra = {{i.diaCompra}}
         titulo= {{i.titulo}}
         valor= {{i.valor}}
