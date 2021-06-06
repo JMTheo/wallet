@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   grafico: any;
   storage: any;
   listaLancamentos: Array<Lancamento>;
+  listaLancamentosCard: Array<Lancamento>;
   legendasGrafico: string[];
 
   async ngOnInit() {
@@ -75,12 +76,12 @@ export class HomePage implements OnInit {
     let entradas = {
       valores: [],
       data: [],
-      total: 0
+      total: 0,
     };
     let saidas = {
       valores: [],
       data: [],
-      total: 0
+      total: 0,
     };
     if (this.listaLancamentos) {
       this.listaLancamentos.forEach((el) => {
@@ -118,6 +119,10 @@ export class HomePage implements OnInit {
     }
   }
   async retornaTodosLancamentos() {
-    this.listaLancamentos = await this.storage.retornaTodosLancamentos();
+    let arr = await this.storage.retornaTodosLancamentos();
+    console.log(arr)
+    this.listaLancamentos = arr;
+    this.listaLancamentosCard = arr.slice().sort((a: Lancamento, b: Lancamento) =>
+    new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime())
   }
 }
