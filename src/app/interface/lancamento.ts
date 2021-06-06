@@ -3,4 +3,5 @@ export interface Lancamento {
   titulo: string;
   valor: number;
   tipoTransacao: string;
+  tipoOperacao: string;
 }

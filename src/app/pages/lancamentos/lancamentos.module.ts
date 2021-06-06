@@ -8,7 +8,7 @@ import { LancamentosPageRoutingModule } from './lancamentos-routing.module';
 
 import { LancamentosPage } from './lancamentos.page';
 
-import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/lancamentos-modal.component';
+import { LancamentosModalComponent } from '../../components/lancamentos-modal/lancamentos-modal.component';
 import { UltimosLancamentosModule } from '../../components/ultimos-lancamentos/ultimos-lancamentos.module';
 
 @NgModule({
