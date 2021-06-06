@@ -85,12 +85,12 @@ export class HomePage implements OnInit {
     };
     if (this.listaLancamentos) {
       this.listaLancamentos.forEach((el) => {
-        if (el.tipoTransacao == 'entrada') {
+        if (el.tipoOperacao == 'entrada') {
           entradas.valores.push(el.valor);
-          entradas.data.push(el.diaCompra);
+          entradas.data.push(new Date(el.diaCompra).toLocaleDateString());
           entradas.total += el.valor;
         } else {
-          saidas.data.push(el.diaCompra);
+          saidas.data.push(new Date(el.diaCompra).toLocaleDateString());
           saidas.valores.push(el.valor);
           saidas.total += el.valor;
         }
@@ -120,9 +120,12 @@ export class HomePage implements OnInit {
   }
   async retornaTodosLancamentos() {
     let arr = await this.storage.retornaTodosLancamentos();
-    console.log(arr)
-    this.listaLancamentos = arr;
-    this.listaLancamentosCard = arr.slice().sort((a: Lancamento, b: Lancamento) =>
-    new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime())
+    if(arr) {
+      console.log(arr)
+      this.listaLancamentos = arr;
+      this.listaLancamentosCard = arr.slice().sort((a: Lancamento, b: Lancamento) =>
+      new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime())
+    }
+
   }
 }

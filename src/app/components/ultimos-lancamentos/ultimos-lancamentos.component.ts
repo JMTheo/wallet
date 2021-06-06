@@ -15,8 +15,9 @@ export class UltimosLancamentosComponent implements OnInit {
   @Input() tipoOperacao: string;
 
 
- 
+
   ngOnInit() {
+    this.diaCompra = new Date(this.diaCompra).toLocaleDateString();
   }
 
   corTexto() {
@@ -47,8 +48,8 @@ export class UltimosLancamentosComponent implements OnInit {
         break;
       }
 
-      case 'investimentos': { 
-     this.srcImg = "https://static.vecteezy.com/ti/vetor-gratis/p1/2519573-investimento-grafico-icone-design-ilustracao-vetor.jpg"  
+      case 'investimentos': {
+     this.srcImg = "https://static.vecteezy.com/ti/vetor-gratis/p1/2519573-investimento-grafico-icone-design-ilustracao-vetor.jpg"
      break;
       }
       case 'alimentacao': {
