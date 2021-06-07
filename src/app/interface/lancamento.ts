@@ -1,4 +1,5 @@
 export interface Lancamento {
+  id: string;
   diaCompra: string;
   titulo: string;
   valor: number;

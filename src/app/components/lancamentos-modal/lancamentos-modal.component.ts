@@ -15,7 +15,6 @@ export class LancamentosModalComponent implements OnInit {
   tipoTransacao = new FormControl('', Validators.required);
   valor = new FormControl('', Validators.required);
 
-
   constructor(
     private modalCtrl: ModalController,
     public LocalStorageService: LocalStorageService

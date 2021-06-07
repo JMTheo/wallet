@@ -47,11 +47,27 @@ export class LocalStorageService {
     return this.retornaTodosLancamentos().then((result) => {
       if (result) {
         var index = result.indexOf(id);
+        console.log(index);
         result.splice(index, 1);
         return this.storage.set('lancamentos', result);
       }
     });
   }
+
+  //Função para atualizar os valores de um lançamento
+  public atualizarLancamento(id: any, newValue: any) {
+    return this.retornaTodosLancamentos().then((result) => {
+        result.forEach((e) => {
+          if(e.id === id){
+            console.log(e);
+            result.splice(result.indexOf(e), 1, newValue);
+            return this.storage.set('lancamentos', result);  
+          }
+        })
+      return this.storage.set('lancamentos', result);  
+    })
+  }
+
   //Função que retorna todos os lançamentos em um array de objetos
   public retornaTodosLancamentos() {
     return this._storage.get('lancamentos');
