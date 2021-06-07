@@ -9,6 +9,10 @@ export class RecuperarSenhaPage implements OnInit {
 
   constructor() { }
 
+
+  recuperarSenha(){
+    
+  }
   ngOnInit() {
   }
 
