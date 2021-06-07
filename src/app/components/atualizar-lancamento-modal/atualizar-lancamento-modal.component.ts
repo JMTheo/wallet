@@ -9,7 +9,7 @@ import { LocalStorageService } from 'src/app/service/local-storage-service.servi
   styleUrls: ['./atualizar-lancamento-modal.component.scss'],
 })
 export class AtualizarLancamentoModalComponent implements OnInit {
-  
+
 @Input() lancamento;
 
 titulo = new FormControl('', Validators.required);
@@ -38,13 +38,12 @@ async enviarDados() {
     valor: this.valor.value,
   };
 
-  console.log(this.titulo.value);
   let id = this.lancamento.id;
   await this.LocalStorageService.atualizarLancamento(id, novoLancamento);
   this.fecharModal();
 }
 
-ngOnInit() { 
+ngOnInit() {
   //Mostrando valores atuais no Input
   this.titulo.setValue(this.lancamento.titulo);
   this.diaCompra.setValue(this.lancamento.diaCompra);
