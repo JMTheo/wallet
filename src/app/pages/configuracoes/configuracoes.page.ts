@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../service/local-storage-service.service';
+import { User } from '../../interface/user'
 
 @Component({
   selector: 'app-configuracoes',
@@ -20,12 +21,12 @@ export class ConfiguracoesPage implements OnInit {
     //this.getTheValue()
     this.storage = this.storageService;
   }
-  
+
   ionViewDidEnter() {
     this.getTheValue();
   }
   async setTheValue() {
-    let user = {
+    let user: User = {
       nome: this.nome,
       sobrenome: this.sobrenome,
       email: this.email,
@@ -38,6 +39,7 @@ export class ConfiguracoesPage implements OnInit {
 
   async getTheValue() {
     let userData = await this.storage.get('user');
+    console.log(userData);
     this.nome = userData.nome;
     this.sobrenome = userData.sobrenome;
     this.email = userData.email;

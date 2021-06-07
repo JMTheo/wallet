@@ -1,56 +1,64 @@
-  .segmento{
-    background-color:darkgrey;
-    border-radius: 10px;
-    margin: auto;
-    margin-left: 30%;
-    width: 40%;
-  }
+* {
+  color: rgb(53, 49, 49);
+}
 
-  .botaoSegmento{
-    font-size: 110%;
-  }
+.segmento {
+  background-color: darkgrey;
+  border-radius: 10px;
+  margin: auto;
+  margin-left: 30%;
+  width: 40%;
+}
 
-  .tituloGrafico{
-    min-height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+.botaoSegmento {
+  font-size: 110%;
+}
 
-  .iconeSelecao{
-    font-size: 170%;
-    color: black;
-  }
+.tituloGrafico {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-  .textoSelecao{
-    font-size: 120%;
-    color: black;
-  }
+.iconeSelecao {
+  font-size: 170%;
+  color: black;
+}
 
-  #areaConversao{
-    min-height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+.textoSelecao {
+  font-size: 120%;
+  color: black;
+}
 
-  .bloco1{
-    border-bottom: 1px solid rgb(214, 209, 209);
-  }
+.areaConversao {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-  .textoLista{
-    text-align: center;
-    font-size: 120%;
-    background-color: rgb(230, 227, 227);
-    color: black;
-  }
+.bloco1-1 {
+  border-bottom: 1px solid rgb(214, 209, 209);
+}
 
-  .valor{
-    text-align: end;
-  }
+.bloco1-2 {
+  border-bottom: 2px solid rgb(214, 209, 209);
+}
 
-  * {
-    color: rgb(53, 49, 49);
-  }
+.bloco2-1 {
+  border-bottom: 1px solid rgb(214, 209, 209);
+}
+
+.textoLista {
+  text-align: center;
+  font-size: 120%;
+  background-color: rgb(230, 227, 227);
+  color: black;
+}
+
+.valor {
+  text-align: end;
+}
