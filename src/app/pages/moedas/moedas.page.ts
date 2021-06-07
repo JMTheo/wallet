@@ -23,6 +23,7 @@ export class MoedasPage implements OnInit {
     valor_final: 0,
     valor_origem: new FormControl('0.00', Validators.required),
   };
+  moedaEscolhida:string;
   listaMoedas = {
     dolar: 1,
     euro: 1,
@@ -41,9 +42,10 @@ export class MoedasPage implements OnInit {
     this.criarGrafico();
     let inicializador = {
       target: {
-        value: 'BRL'
-      }
-    }
+        value: 'BRL',
+      },
+    };
+    this.moedaEscolhida = inicializador.target.value;
     this.conversaoMoedas(inicializador);
   }
 
@@ -122,11 +124,11 @@ export class MoedasPage implements OnInit {
     let final = this.moeda.final.value;
     axios
       .get(
-        'https://free.currconv.com/api/v7/convert?q=' +
+        'https://api.currconv.com/api/v7/convert?q=' +
           origem +
           '_' +
           final +
-          '&compact=ultra&apiKey=e55f887d51c5a2e0fb7d'
+          '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
       )
       .then((res) => {
         console.log(res.data[origem + '_' + final]);
@@ -138,42 +140,49 @@ export class MoedasPage implements OnInit {
   }
 
   conversaoMoedas($event) {
+    let stringPesquisa = '';
     let origem = $event.target.value;
     let listaMoedas = ['USD', 'EUR', 'GBP', 'BRL', 'JPY'];
-    let valorConvertido = [];
+    let index = listaMoedas.indexOf(origem);
+    listaMoedas.splice(index, 1);
+
+    //Atualizando label
+    this.moedaEscolhida = origem;
 
     listaMoedas.forEach((el) => {
-      axios
-        .get(
-          'https://free.currconv.com/api/v7/convert?q=' +
-            origem +
-            '_' +
-            el +
-            '&compact=ultra&apiKey=e55f887d51c5a2e0fb7d'
-        )
-        .then((res) => {
-          let valor = res.data[origem + '_' + el];
-          console.log(valor.toFixed(2));
-          switch (el) {
-            case 'USD':
-              this.listaMoedas.dolar = valor.toFixed(2);
-              break;
-            case 'EUR':
-              this.listaMoedas.euro = valor.toFixed(2);
-              break;
-            case 'GBP':
-              this.listaMoedas.libra = valor.toFixed(2);
-              break;
-            case 'BRL':
-              this.listaMoedas.real = valor.toFixed(2);
-              break;
-            case 'JPY':
-              this.listaMoedas.iene = valor.toFixed(2);
-              break;
-          }
-          valorConvertido.push(valor.toFixed(2));
-        })
-        .catch((err) => console.log('Erro: ', err));
+      stringPesquisa += origem + '_' + el + ',';
     });
+    stringPesquisa = stringPesquisa.slice(0, -1);
+
+    axios
+      .get(
+        'https://api.currconv.com/api/v7/convert?q=' +
+          stringPesquisa +
+          '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
+      )
+      .then((res) => {
+        let moedas = stringPesquisa.split(',');
+
+        this.listaMoedas = {
+          dolar: 1,
+          euro: 1,
+          iene: 1,
+          libra: 1,
+          real: 1,
+        };
+
+        moedas.forEach((el) => {
+          let valor = res.data[el];
+          valor = valor.toFixed(2);
+          console.log(valor);
+
+          if (el.includes('_USD')) this.listaMoedas.dolar = valor;
+          else if (el.includes('_EUR')) this.listaMoedas.euro = valor;
+          else if (el.includes('_GBP')) this.listaMoedas.libra = valor;
+          else if (el.includes('_BRL')) this.listaMoedas.real = valor;
+          else this.listaMoedas.iene = valor;
+        });
+      })
+      .catch((err) => console.log('Erro: ', err));
   }
 }
