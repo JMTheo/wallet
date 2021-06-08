@@ -4,6 +4,8 @@ import { LancamentosModalComponent } from 'src/app/components/lancamentos-modal/
 import { AtualizarLancamentoModalComponent } from 'src/app/components/atualizar-lancamento-modal/atualizar-lancamento-modal.component'
 import { LocalStorageService } from '../../service/local-storage-service.service';
 import { Lancamento } from '../../interface/lancamento';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-lancamentos',
@@ -13,10 +15,12 @@ import { Lancamento } from '../../interface/lancamento';
 export class LancamentosPage implements OnInit {
   lancamentosList: Array<Lancamento>;
   storage: any;
+  user;
 
   constructor(
     private modalCtrl: ModalController,
-    private LocalStorageService: LocalStorageService
+    private LocalStorageService: LocalStorageService,
+    private fireauth: AngularFireAuth
   ) {}
 
   async ngOnInit() {
@@ -24,6 +28,11 @@ export class LancamentosPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.fireauth.onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+      }
+    });
     this.retornaTodosLancamentos();
   }
 
@@ -54,7 +63,7 @@ export class LancamentosPage implements OnInit {
 
     await modal.present();
   }
-  
+
   //Atualiza lista de lançamentos
   async retornaTodosLancamentos() {
     this.lancamentosList = await this.storage.retornaTodosLancamentos();

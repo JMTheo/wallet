@@ -15,12 +15,31 @@
   <h1>Crie<br />sua conta</h1>
 
   <form id="form">
-    <app-input type="text"placeholder="Seu nome"></app-input>
-    <app-input type="email" placeholder="Email"></app-input>
-    <app-input type="password" placeholder="Senha"></app-input>
-    <ion-button expand="block" routerLink="/inicial" shape="round">Cadastrar-se</ion-button>
+    <!-- <app-input type="text"placeholder="Seu nome"></app-input> -->
+    <app-input
+      type="email"
+      placeholder="Email"
+      [formControl]="email"
+      ngDefaultControl
+      name="email"
+    ></app-input>
+    <app-input
+      type="password"
+      placeholder="Senha"
+      [formControl]="senha"
+      ngDefaultControl
+      name="senha"
+    ></app-input>
+    <ion-button
+      expand="block"
+      routerLink="/inicial"
+      shape="round"
+      (click)="registrarUser()"
+      >Cadastrar-se</ion-button
+    >
   </form>
 
-  <p style="color: black;">Ao clicar em "Cadastrar" <br />você aceita nossos termos & condições</p>
+  <p style="color: black">
+    Ao clicar em "Cadastrar" <br />você aceita nossos termos & condições
+  </p>
 </ion-content>
-

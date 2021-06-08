@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-registrar',
@@ -6,10 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
-
-  constructor() { }
+  email = new FormControl('', Validators.required);
+  senha = new FormControl('', Validators.required);
+  error: string = '';
+  constructor(
+    private fireauth: AngularFireAuth,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
+
+  registrarUser() {
+    console.log(`email: ${this.email.value} | senha: ${this.senha.value}`)
+    this.fireauth
+    .createUserWithEmailAndPassword(this.email.value, this.senha.value)
+      .then(res => {
+        if (res.user) {
+          console.log(res.user);
+          this.router.navigate(['/home']);
+        }
+      })
+      .catch(err => {
+        console.log(`login failed ${err}`);
+        this.error = err.message;
+      });
+  }
+
+
 
 }

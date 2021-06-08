@@ -13,28 +13,31 @@
       <ion-row justify-content-center align-items-center>
       </ion-row>
       <ion-item *ngFor="let i of lancamentosList">
-        <ion-col size="10">
-          <app-ultimos-lancamentos
-          diaCompra = {{i.diaCompra}}
-          titulo= {{i.titulo}}
-          valor= {{i.valor}}
-          tipoOperacao={{i.tipoOperacao}}
-          tipoTransacao={{i.tipoTransacao}}
-        >
-        </app-ultimos-lancamentos>
-        </ion-col>
-        <ion-col>
-        <ion-col>
-            <ion-button color="light" (click)="atualizarLancamento(i)">
-              <ion-icon name="create-outline"></ion-icon>
-            </ion-button>
-        </ion-col>
-        <ion-col>
-            <ion-button color="light" (click)="delete(i.id)">
-              <ion-icon name="trash-outline"></ion-icon>
-            </ion-button>
-        </ion-col>
-        </ion-col>
+        <div *ngIf="i.criador == user.email">
+          <ion-col size="10">
+            <app-ultimos-lancamentos
+            diaCompra = {{i.diaCompra}}
+            titulo= {{i.titulo}}
+            valor= {{i.valor}}
+            tipoOperacao={{i.tipoOperacao}}
+            tipoTransacao={{i.tipoTransacao}}
+          >
+          </app-ultimos-lancamentos>
+          </ion-col>
+          <ion-col>
+          <ion-col>
+              <ion-button color="light" (click)="atualizarLancamento(i)">
+                <ion-icon name="create-outline"></ion-icon>
+              </ion-button>
+          </ion-col>
+          <ion-col>
+              <ion-button color="light" (click)="delete(i.id)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+          </ion-col>
+          </ion-col>
+        </div>
+
       </ion-item>
 
     </ion-grid>
