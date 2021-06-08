@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { ChartDataSets, ChartType, ScaleType } from 'chart.js';
 import { FormControl, Validators } from '@angular/forms';
 import axios from 'axios';
+import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 
 @Component({
   selector: 'app-moedas',
@@ -13,7 +14,7 @@ import axios from 'axios';
 export class MoedasPage implements OnInit {
   @ViewChild('graficoLinha') graficoLinha: ElementRef;
 
-  ngOnInit() {}
+  ngOnInit() { }
   grafico: any;
   legenda: any;
   dadosAPI: any;
@@ -34,12 +35,11 @@ export class MoedasPage implements OnInit {
 
   public tipoGrafico: ChartType = 'line';
 
-  constructor(private httpClient: HttpClient) {
-    this.loadData();
+  constructor() {
+    
   }
 
   ionViewDidEnter() {
-    this.criarGrafico();
     let inicializador = {
       target: {
         value: 'BRL',
@@ -47,17 +47,21 @@ export class MoedasPage implements OnInit {
     };
     this.moedaEscolhida = inicializador.target.value;
     this.conversaoMoedas(inicializador);
+    this.criarGrafico();
   }
+  
 
   criarGrafico() {
+    let lista = [this.listaMoedas.dolar, this.listaMoedas.euro, this.listaMoedas.libra, this.listaMoedas.real];
+    
     this.grafico = new Chart(this.graficoLinha.nativeElement, {
       type: this.tipoGrafico,
       data: {
-        labels: this.legenda,
+        labels: ['USD', 'EUR', 'GBP', 'BRL'],
         datasets: [
           {
-            label: 'Bitcoin',
-            data: this.dadosAPI,
+            label: '',
+            data: lista,
             borderColor: '#00AEFF',
             borderWidth: 3,
             fill: false,
@@ -97,41 +101,18 @@ export class MoedasPage implements OnInit {
     });
   }
 
-  loadData() {
-    const request: string = `http://api.marketstack.com/v1/eod?access_key=b39be2892ed706cbb1eaaf54a53b2926&symbols=BTC&date_from=2021-06-01&date_to=2021-06-04`;
-
-    this.httpClient.get(request).subscribe((res) => {
-      const data: any = (res as any).data;
-      this.legenda = [];
-      this.dadosAPI = [];
-
-      for (let i = 0; i < data.length; i++) {
-        const date: Date = new Date(data[i].date);
-
-        this.legenda.push(
-          `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-        );
-        this.dadosAPI.push(data[i].close);
-      }
-      this.legenda = this.legenda.reverse();
-      this.dadosAPI = this.dadosAPI.reverse();
-      this.grafico = this.criarGrafico();
-    });
-  }
-
   converterMoeda() {
     let origem = this.moeda.origem.value;
     let final = this.moeda.final.value;
     axios
       .get(
         'https://api.currconv.com/api/v7/convert?q=' +
-          origem +
-          '_' +
-          final +
-          '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
+        origem +
+        '_' +
+        final +
+        '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
       )
       .then((res) => {
-        console.log(res.data[origem + '_' + final]);
         let conversao =
           this.moeda.valor_origem.value * res.data[origem + '_' + final];
         this.moeda.valor_final = conversao.toFixed(2);
@@ -157,12 +138,12 @@ export class MoedasPage implements OnInit {
     axios
       .get(
         'https://api.currconv.com/api/v7/convert?q=' +
-          stringPesquisa +
-          '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
+        stringPesquisa +
+        '&compact=ultra&apiKey=a19b93f5fd9b4392b6c32517eb7f9ad4'
       )
       .then((res) => {
         let moedas = stringPesquisa.split(',');
-
+        
         this.listaMoedas = {
           dolar: 1,
           euro: 1,
@@ -174,13 +155,15 @@ export class MoedasPage implements OnInit {
         moedas.forEach((el) => {
           let valor = res.data[el];
           valor = valor.toFixed(2);
-          console.log(valor);
+          valor = Number(valor);
 
           if (el.includes('_USD')) this.listaMoedas.dolar = valor;
           else if (el.includes('_EUR')) this.listaMoedas.euro = valor;
           else if (el.includes('_GBP')) this.listaMoedas.libra = valor;
           else if (el.includes('_BRL')) this.listaMoedas.real = valor;
           else this.listaMoedas.iene = valor;
+          this.criarGrafico();
+
         });
       })
       .catch((err) => console.log('Erro: ', err));

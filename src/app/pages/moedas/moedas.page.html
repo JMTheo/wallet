@@ -96,7 +96,6 @@
           <ion-select-option value="EUR">Euro</ion-select-option>
           <ion-select-option value="GBP">Libra</ion-select-option>
           <ion-select-option value="BRL">Real</ion-select-option>
-          <ion-select-option value="JPY">Iene</ion-select-option>
         </ion-select>
       </ion-card-title>
       <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico">
@@ -132,7 +131,7 @@
     <ion-select
       class="textoLista"
       [value]="moedaEscolhida"
-      (ionChange)="conversaoMoedas($event)"
+      (ionChange)="conversaoMoedas($event)" 
     > {{ moedaEscolhida }}
       <ion-select-option value="USD">Dólar</ion-select-option>
       <ion-select-option value="EUR">Euro</ion-select-option>
