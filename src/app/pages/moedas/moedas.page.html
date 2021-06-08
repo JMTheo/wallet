@@ -91,9 +91,12 @@
   <ion-card class="tipoGrafico">
     <ion-card-header class="tituloGrafico">
       <ion-card-title>
-        <ion-select value="BTC - Dolar">
-          <ion-select-option>BTC - Dolar</ion-select-option>
-          <ion-select-option>Euro - Yene</ion-select-option>
+        <ion-select [value]="moedaEscolhida" (ionChange)="conversaoMoedas($event)">
+          <ion-select-option value="USD">Dólar</ion-select-option>
+          <ion-select-option value="EUR">Euro</ion-select-option>
+          <ion-select-option value="GBP">Libra</ion-select-option>
+          <ion-select-option value="BRL">Real</ion-select-option>
+          <ion-select-option value="JPY">Iene</ion-select-option>
         </ion-select>
       </ion-card-title>
       <ion-segment class="segmento" value="line" [(ngModel)]="tipoGrafico">
@@ -126,7 +129,11 @@
 
   <!--Lista de moedas-->
   <ion-card>
-    <ion-select class="textoLista" value="BRL" (ionChange)="conversaoMoedas($event)">
+    <ion-select
+      class="textoLista"
+      [value]="moedaEscolhida"
+      (ionChange)="conversaoMoedas($event)"
+    > {{ moedaEscolhida }}
       <ion-select-option value="USD">Dólar</ion-select-option>
       <ion-select-option value="EUR">Euro</ion-select-option>
       <ion-select-option value="GBP">Libra</ion-select-option>

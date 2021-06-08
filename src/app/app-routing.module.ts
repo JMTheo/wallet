@@ -35,7 +35,18 @@ const routes: Routes = [
   {
     path: 'inicial',
     loadChildren: () => import('./pages/inicial/inicial.module').then( m => m.InicialPageModule)
-  }
+  },
+  {
+    path: 'recuperar-senha',
+    loadChildren: () => import('./pages/recuperar-senha/recuperar-senha.module').then( m => m.RecuperarSenhaPageModule)
+  },  {
+    path: 'recuperar-senha',
+    loadChildren: () => import('./pages/recuperar-senha/recuperar-senha.module').then( m => m.RecuperarSenhaPageModule)
+  },
+
+
+  
+
 ];
 
 @NgModule({

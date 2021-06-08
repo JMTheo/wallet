@@ -1,0 +1,24 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login" color="primary">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/registrar">Cadastre-se!</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+
+  <form id="form">
+    <h1>Digite Seu e-mail</h1>
+    <app-input type="email"placeholder="Seu email"></app-input>
+    <ion-button expand="block" (click)="recuperarSenha()" shape="round">Enviar-Email</ion-button>
+  </form>
+</ion-content>
