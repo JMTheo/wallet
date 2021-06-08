@@ -94,14 +94,16 @@ export class HomePage implements OnInit {
     };
     if (this.listaLancamentos) {
       this.listaLancamentos.forEach((el) => {
-        if (el.tipoOperacao == 'entrada') {
-          entradas.valores.push(el.valor);
-          entradas.data.push(new Date(el.diaCompra).toLocaleDateString());
-          entradas.total += el.valor;
-        } else {
-          saidas.data.push(new Date(el.diaCompra).toLocaleDateString());
-          saidas.valores.push(el.valor);
-          saidas.total += el.valor;
+        if (el.criador == this.user.email) {
+          if (el.tipoOperacao == 'entrada') {
+            entradas.valores.push(el.valor);
+            entradas.data.push(new Date(el.diaCompra).toLocaleDateString());
+            entradas.total += el.valor;
+          } else {
+            saidas.data.push(new Date(el.diaCompra).toLocaleDateString());
+            saidas.valores.push(el.valor);
+            saidas.total += el.valor;
+          }
         }
       });
     }
