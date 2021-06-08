@@ -5,7 +5,7 @@ TO DO:
 - [ ] Arranjar um nome melhor para o projeto final
 
 ## DEMO
-![demo]
+![Demo](https://wallet-ionic.netlify.app/)
 
 ## Instalação
 ```bash
@@ -21,6 +21,7 @@ ionic serve
 
 ## Membros do grupo
 - Amanda
+- Evair
 - Gabriel
 - João Matheus 
 - José Augusto
