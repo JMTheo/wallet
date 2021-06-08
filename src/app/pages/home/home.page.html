@@ -41,15 +41,17 @@
       <ion-col>
         <ion-title>Últimas transações</ion-title>
         <div *ngFor="let i of listaLancamentosCard">
-          <app-ultimos-lancamentos *ngIf="i.tipoOperacao == estadoCategoria"
-          diaCompra = {{i.diaCompra}}
-          titulo= {{i.titulo}}
-          valor= {{i.valor}}
-          tipoTransacao={{i.tipoTransacao}}
-          tipoOperacao={{i.tipoOperacao}}
-        ></app-ultimos-lancamentos>
+          <div *ngIf="i.criador == user.email">
+            <app-ultimos-lancamentos
+              *ngIf="i.tipoOperacao == estadoCategoria"
+              diaCompra="{{i.diaCompra}}"
+              titulo="{{i.titulo}}"
+              valor="{{i.valor}}"
+              tipoTransacao="{{i.tipoTransacao}}"
+              tipoOperacao="{{i.tipoOperacao}}"
+            ></app-ultimos-lancamentos>
+          </div>
         </div>
-
       </ion-col>
     </ion-grid>
   </div>

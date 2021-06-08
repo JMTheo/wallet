@@ -1,5 +1,3 @@
-
-
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -15,17 +13,30 @@
 
 <ion-content>
   <div id="header">
-    <img src="../../../assets/pessoas-minusculas-economizando-dinheiro-na-ilustracao-plana-isolada-do-cofrinho_74855-11124.jpg" />
+    <img
+      src="../../../assets/pessoas-minusculas-economizando-dinheiro-na-ilustracao-plana-isolada-do-cofrinho_74855-11124.jpg"
+    />
   </div>
 
   <form id="form">
-    <app-input type= "email" placeholder="Email"></app-input>
-    <app-input type="password" placeholder="Senha"></app-input>
-    <ion-button type="submit" routerLink="/home" expand="block" shape="round">Login</ion-button>
+    <app-input
+      type="email"
+      placeholder="Email"
+      [formControl]="email"
+      ngDefaultControl
+      name="email"
+    ></app-input>
+    <app-input
+      type="password"
+      placeholder="Senha"
+      [formControl]="senha"
+      ngDefaultControl
+      name="senha"
+    ></app-input>
+    <ion-button type="submit" expand="block" shape="round" (click)="login()"
+      >Login</ion-button
+    >
   </form>
 
   <p style="cursor: pointer;" routerLink="/recuperar-senha">Esqueceu sua senha?</p> 
 </ion-content>
-
-
-

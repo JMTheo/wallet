@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { LocalStorageService } from '../../service/local-storage-service.service';
 import { Lancamento } from '../../interface/lancamento';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,10 @@ import { Lancamento } from '../../interface/lancamento';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private LocalStorageService: LocalStorageService) {}
+  constructor(
+    private LocalStorageService: LocalStorageService,
+    private fireauth: AngularFireAuth
+  ) {}
   @ViewChild('graficoLinha') graficoLinha: ElementRef;
 
   estadoCategoria: string;
@@ -22,6 +26,7 @@ export class HomePage implements OnInit {
   listaLancamentos: Array<Lancamento>;
   listaLancamentosCard: Array<Lancamento>;
   legendasGrafico: string[];
+  user;
 
   async ngOnInit() {
     this.storage = this.LocalStorageService;
@@ -29,6 +34,9 @@ export class HomePage implements OnInit {
   }
 
   async ionViewDidEnter() {
+    this.fireauth.onAuthStateChanged((user) => {
+      if (user) this.user = user;
+    });
     await this.retornaTodosLancamentos();
     this.trocarDadosGrafico();
     this.criarGrafico();
@@ -121,11 +129,14 @@ export class HomePage implements OnInit {
   }
   async retornaTodosLancamentos() {
     let arr = await this.storage.retornaTodosLancamentos();
-    if(arr) {
+    if (arr) {
       this.listaLancamentos = arr;
-      this.listaLancamentosCard = arr.slice().sort((a: Lancamento, b: Lancamento) =>
-      new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime())
+      this.listaLancamentosCard = arr
+        .slice()
+        .sort(
+          (a: Lancamento, b: Lancamento) =>
+            new Date(b.diaCompra).getTime() - new Date(a.diaCompra).getTime()
+        );
     }
-
   }
 }

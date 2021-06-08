@@ -42,6 +42,18 @@ export class LocalStorageService {
     });
   }
 
+  public addUser(value: any) {
+    console.log(value)
+    return this.retornarTodosUsuarios().then((result) => {
+      if(result) {
+        result.push(value);
+        return this._storage.set('users', result);
+      } else {
+        return this._storage.set('users', [value]);
+      }
+    });
+  }
+
   //Para excluir um lançamento, apenas passe o ID
   public delLancamento(id: any) {
     return this.retornaTodosLancamentos().then((result) => {
@@ -61,16 +73,20 @@ export class LocalStorageService {
           if(e.id === id){
             console.log(e);
             result.splice(result.indexOf(e), 1, newValue);
-            return this.storage.set('lancamentos', result);  
+            return this.storage.set('lancamentos', result);
           }
         })
-      return this.storage.set('lancamentos', result);  
+      return this.storage.set('lancamentos', result);
     })
   }
 
   //Função que retorna todos os lançamentos em um array de objetos
   public retornaTodosLancamentos() {
     return this._storage.get('lancamentos');
+  }
+
+  public retornarTodosUsuarios() {
+    return this._storage.get('users');
   }
 
   //Deletar a key inteira do localStorage
