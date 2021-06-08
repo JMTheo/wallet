@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { InputModule } from 'src/app/components/input/input.module';
 import { IonicModule } from '@ionic/angular';
@@ -14,6 +15,7 @@ import { RecuperarSenhaPage } from './recuperar-senha.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     InputModule,
     RecuperarSenhaPageRoutingModule
   ],
