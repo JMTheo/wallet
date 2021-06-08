@@ -47,7 +47,7 @@ export class ConfiguracoesPage implements OnInit {
     this.user
       .updateEmail(this.email)
       .then(() => {
-        this.presentToast('Perfil atualizado com sucesso', 1000, 'bottom');
+        this.presentToast('Perfil atualizado com sucesso', 'bottom', 2000);
         this.error = '';
       })
       .catch((err) => {
@@ -97,8 +97,8 @@ export class ConfiguracoesPage implements OnInit {
   async presentToast(message, position, duration) {
     const toast = await this.toastController.create({
       message,
-      duration,
       position,
+      duration
     });
     toast.present();
   }

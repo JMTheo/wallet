@@ -43,7 +43,6 @@ export class LocalStorageService {
   }
 
   public addUser(value: any) {
-    console.log(value)
     return this.retornarTodosUsuarios().then((result) => {
       if(result) {
         result.push(value);
@@ -59,7 +58,6 @@ export class LocalStorageService {
     return this.retornaTodosLancamentos().then((result) => {
       if (result) {
         var index = result.indexOf(id);
-        console.log(index);
         result.splice(index, 1);
         return this.storage.set('lancamentos', result);
       }
@@ -71,7 +69,6 @@ export class LocalStorageService {
     return this.retornaTodosLancamentos().then((result) => {
         result.forEach((e) => {
           if(e.id === id){
-            console.log(e);
             result.splice(result.indexOf(e), 1, newValue);
             return this.storage.set('lancamentos', result);
           }

@@ -25,7 +25,6 @@ export class RecuperarSenhaPage implements OnInit {
     this.fireauth
       .sendPasswordResetEmail(this.email.value)
       .then((data) => {
-        console.log(data);
         this.presentToast(
           'Um email foi enviado para você recuperar',
           'bottom',

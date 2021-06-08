@@ -18,12 +18,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   login() {
-    console.log(`email: ${this.email.value} | senha: ${this.senha.value}`)
     this.fireauth
       .signInWithEmailAndPassword(this.email.value, this.senha.value)
       .then((res) => {
         if (res.user) {
-          console.log(res.user);
           this.router.navigate(['/home']);
         }
       })

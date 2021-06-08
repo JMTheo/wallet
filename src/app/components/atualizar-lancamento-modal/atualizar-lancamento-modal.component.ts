@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { LocalStorageService } from 'src/app/service/local-storage-service.service';
@@ -17,11 +18,21 @@ diaCompra = new FormControl('', Validators.required);
 tipoOperacao = new FormControl('', Validators.required);
 tipoTransacao = new FormControl('', Validators.required);
 valor = new FormControl('', Validators.required);
+user;
 
 constructor(
   private modalCtrl: ModalController,
-  public LocalStorageService: LocalStorageService
+  public LocalStorageService: LocalStorageService,
+  private fireauth: AngularFireAuth
 ) {}
+
+ionViewDidEnter() {
+  this.fireauth.onAuthStateChanged((user) => {
+    if (user) {
+      this.user = user;
+    }
+  })
+}
 
 async fecharModal() {
   await this.modalCtrl.dismiss();
@@ -36,6 +47,7 @@ async enviarDados() {
     tipoOperacao: this.tipoOperacao.value,
     tipoTransacao: this.tipoTransacao.value,
     valor: this.valor.value,
+    criador: this.user.email
   };
 
   let id = this.lancamento.id;
